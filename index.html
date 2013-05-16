@@ -82,6 +82,9 @@
 					<section id="experiment-finale">
 						<a href="http://knowyourmeme.com/memes/thats-racist"><img src="images/thats-racist.gif" alt="That's Devicest"/></a>
 					</section>
+					<section id="unknown-unknowns">
+						<h2>Responsive Web Design isn’t about current devices and known unknowns, it’s about future devices and unknown unknowns.</h2>
+					</section>
 				</section>
 				<section>
 					<section id="content-first">
@@ -237,28 +240,234 @@ from grids meetup</code></pre>
 						<h2>Singularity</h2>
 						<p><a href="http://http://singularity.gs/">singularity.gs</a></p>
 					</section>
-					<section id="singularity-value-proposition">
-            <h2>Why do I want this?</h2>
-            <ul>
-	            <li class="fragment">tktktk</li>
-            </ul>
+
+					<section id="building-with-grids">
+						<h2>Building With Grids</h2>
+						<p>Grids provide order to your design and structure to your information.</p>
 					</section>
-					<section id="singularity-basic">
-						<h2>Basic Uses</h2>
-						<p>tktktk</p>
-						<pre><code class="language-scss">[code] tktktk</code></pre>
+					<section id="street-grids" data-source="http://tedpak.com/2013/03/31/what-new-york-does-right" data-cite="Ted Pak">
+						<img src="images/street_grids.png" alt="Street Grids of NYC, Philly, DC, and Toronto">
 					</section>
-					<section id="singularity-advanced-media">
-						<h2>Advanced Uses</h2>
-						<p>tktktk</p>
-						<pre><code class="language-scss">[code] tktktk</code></pre>
-					</section>
-					<section id="singularity-crazy-advanced-level4">
-						<h2>Crazy Advanced Uses</h2>
-						<p>tktktk</p>
-						<pre><code class="language-scss">[code] tktktk</code></pre>
+					<section id="specific-grids">
+						<p>The best grids are specifc to your content and your design, as they are an extension of both.</p>
 					</section>
 				</section>
+
+				<section id="border-box">
+					<h2>Let's Cheat at CSS</h2>
+
+					<pre><code class="language-scss">// We can import all of Compass safely because it doesn't write any CSS.
+@import 'compass';
+
+// We switch our box model to Border Box.
+// From [Paul Irish](http://paulirish.com/2012/box-sizing-border-box-ftw/)
+*, *:before, *:after {
+  @include box-sizing('border-box');
+}</code></pre>
+				</section>
+
+				<section id="symmetric-grids-code">
+					<h2>Symmetric Grids</h2>
+
+					<pre><code class="language-scss">// Symmetric grids are expressed as a single number denoting how many equal sized columns you'd like.
+
+$grids: 12;
+$gutters: 1/3;</code></pre>
+				</section>
+				<section id="symmetric-grids-image">
+					<h2>Symmetric Grids</h2>
+
+					<img src="images/symmetric.png" alt="Symmetric Grid">
+				</section>
+
+				<section id="asymmetric-grids-code">
+					<h2>Asymmetric Grids</h2>
+
+					<pre><code class="language-scss">// Asymmetric grids are expressed as a list of number denoting the relative sizes of each column to each other.
+
+$grids: 2 8 2;
+$gutters: 1/3;</code></pre>
+				</section>
+
+				<section id="asymmetric-grids-image">
+					<h2>Asymmetric Grids</h2>
+
+					<img src="images/asymmetric.png" alt="Symmetric Grid">
+				</section>
+			</section>
+
+			<section>
+				<section id="semantic-grid">
+					<h2>Semantic Grids</h2>
+					<p>Singularity is what we like to call a semantic grid system, meaning that instead of grid classes being generated that you then apply to your HTML, the grid is stored entirely within your CSS and applied directly to the element you want to use it on.</p>
+				</section>
+				<section id="grid-span-html">
+					<h2>Spanning The Grid - HTML</h2>
+
+					<pre><code class="language-markup">&lt;body&gt;
+  &lt;div class="main"&gt;Main Section&lt;/div&gt;
+  &lt;div class="first"&gt;First Section&lt;/div&gt;
+  &lt;div class="second"&gt;Second Section&lt;/div&gt;
+&lt;/body&gt;</code></pre>
+				</section>
+				<section id="grid-span-scss">
+					<h2>Spanning The Grid - Sass</h2>
+
+					<pre><code class="language-scss">// Simply pass the number of columns you'd like to span and what column you'd like to start from.
+
+$grids: 2 8 2;
+$gutters: 1/3;
+
+.first {
+  @include grid-span(1, 1);
+}
+
+.main {
+  @include grid-span(1, 2);
+}
+
+.second {
+  @include grid-span(1, 3);
+}</code></pre>
+				</section>
+				<section id="grid-span-display">
+					<h2>Spanning The Grid - Display</h2>
+					<img src="images/grid-span.png" alt="Grid Span display">
+				</section>
+			</section>
+
+			<section>
+				<section id="responsive-grids">
+					<h2>Responsive Grid Context - Sass</h2>
+
+					<pre><code class="language-scss">// add-grid allows you to automatically change your global Grid Context at various breakpoints
+
+$grids: 12;
+$grids: add-grid(2 8 2 at 700px);
+$gutters: 1/3;
+
+.first {
+  @include grid-span(3, 4);
+
+  @include breakpoint(700px) {
+    @include grid-span(1, 1);
+  }
+}
+
+.main {
+  @include grid-span(6, 7);
+
+  @include breakpoint(700px) {
+    @include grid-span(1, 2);
+  }
+}
+
+.second {
+  @include grid-span(3, 1);
+
+  @include breakpoint(700px) {
+    @include grid-span(1, 3);
+  }
+}</code></pre>
+				</section>
+				<section id="responsive-grids-display">
+					<h2>Responsive Grid Context - Display</h2>
+
+					<video src="videos/rwd-grid-context.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' autoplay loop></video>
+				</section>
+			</section>
+			<section>
+				<section id="nested-grid-html">
+					<h2>Nested Grids - HTML</h2>
+
+					<pre><code class="language-markup">&lt;body&gt;
+  &lt;div class="main"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;
+      &lt;div class="a"&gt;Three A&lt;/div&gt;
+      &lt;div class="b"&gt;Three B&lt;/div&gt;
+      &lt;div class="c"&gt;Three C&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="four"&gt;Four&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="first"&gt;First Section&lt;/div&gt;
+  &lt;div class="second"&gt;Second Section&lt;/div&gt;
+&lt;/body&gt;</code></pre>
+				</section>
+				<section id="nested-grid-outer-scss">
+					<h2>Nested Grids (Outer Grid) - Sass</h2>
+
+					<pre><code class="language-scss">$grids: 2 8 2;
+$gutters: 1/3;
+
+.first {
+  @include grid-span(1, 1);
+}
+
+.main {
+  @include grid-span(1, 2);
+}
+
+.second {
+  @include grid-span(1, 3);
+}
+</code></pre>
+				</section>
+				<section id="nested-grid-outer-display">
+					<h2>Nested Grid (Outer Grid) - Display</h2>
+					<img src="images/nest-outer.png" alt="Nested Grids, Outer Grid">
+				</section>
+				<section id="nested-grid-inner-1-scss">
+					<h2>Nested Grids (First Nesting) - Sass</h2>
+
+					<pre><code class="language-scss">@include layout(8) {
+	.one {
+	  @include grid-span(1, 1);
+	}
+
+	.two {
+	  @include grid-span(1, 8);
+	}
+
+	.three {
+	  @include grid-span(6, 2);
+	}
+
+	.four {
+	  @include grid-span(2, 4);
+	  clear: both;
+	 }
+}</code></pre>
+				</section>
+				<section id="nested-grid-inner-1-display">
+					<h2>Nested Grid (First Nesting) - Display</h2>
+					<img src="images/nest-inner-1.png" alt="Nested Grids, First Nesting">
+				</section>
+				<section id="nested-grid-inner-2-scss">
+					<h2>Nested Grids (Second Nesting) - Sass</h2>
+
+					<pre><code class="language-scss">@include layout(6) {
+	.a {
+	  @include grid-span(2, 3);
+	}
+
+	.b {
+	  @include grid-span(2, 5);
+	}
+
+	.c {
+	  @include grid-span(2, 1);
+	}
+}</code></pre>
+				</section>
+				<section id="nested-grid-inner-2-display">
+					<h2>Nested Grid (Second Nesting) - Display</h2>
+					<img src="images/nest-inner-2.png" alt="Nested Grids, Second Nesting">
+				</section>
+
+			</section>
+
 
 				<section>
 					<section id="team-sass">
@@ -333,9 +542,7 @@ from grids meetup</code></pre>
 
 
 
-				<section id="unknown-unknowns">
-						<h2>Responsive Web Design isn’t about current devices and known unknowns, it’s about future devices and unknown unknowns.</h2>
-				</section>
+
 
 				<section data-state="the-web">
 					<section id="past-web" data-source="http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/" data-cite="Brad Frost">
@@ -618,240 +825,7 @@ $breakpoint-no-query-fallbacks: '.touch';
 				</section>
 
 				<section>
-					<section id="building-with-grids">
-						<h2>Building With Grids</h2>
-						<p>Grids provide order to your design and structure to your information.</p>
-					</section>
-					<section id="street-grids" data-source="http://tedpak.com/2013/03/31/what-new-york-does-right" data-cite="Ted Pak">
-						<img src="images/street_grids.png" alt="Street Grids of NYC, Philly, DC, and Toronto">
-					</section>
-					<section id="specific-grids">
-						<p>The best grids are specifc to your content and your design, as they are an extension of both.</p>
-					</section>
-				</section>
 
-				<section id="border-box">
-					<h2>Let's Cheat at CSS</h2>
-
-					<pre><code class="language-scss">// We can import all of Compass safely because it doesn't write any CSS.
-@import 'compass';
-
-// We switch our box model to Border Box.
-// From [Paul Irish](http://paulirish.com/2012/box-sizing-border-box-ftw/)
-*, *:before, *:after {
-  @include box-sizing('border-box');
-}</code></pre>
-				</section>
-
-				<section id="singularity">
-					<h2><a href="https://github.com/team-sass/singularity">Singularity</a></h2>
-
-					<pre class="fragment"><code class="language-scss">> gem install singularitygs</code></pre>
-
-					<pre class="fragment"><code class="language-scss">require 'singularitygs'</code></pre>
-
-					<pre class="fragment"><code class="language-scss">@import 'singularitygs';</code></pre>
-				</section>
-			<section>
-				<section id="symmetric-grids-code">
-					<h2>Symmetric Grids</h2>
-
-					<pre><code class="language-scss">// Symmetric grids are expressed as a single number denoting how many equal sized columns you'd like.
-
-$grids: 12;
-$gutters: 1/3;</code></pre>
-				</section>
-				<section id="symmetric-grids-image">
-					<h2>Symmetric Grids</h2>
-
-					<img src="images/symmetric.png" alt="Symmetric Grid">
-				</section>
-
-				<section id="asymmetric-grids-code">
-					<h2>Asymmetric Grids</h2>
-
-					<pre><code class="language-scss">// Asymmetric grids are expressed as a list of number denoting the relative sizes of each column to each other.
-
-$grids: 2 8 2;
-$gutters: 1/3;</code></pre>
-				</section>
-
-				<section id="asymmetric-grids-image">
-					<h2>Asymmetric Grids</h2>
-
-					<img src="images/asymmetric.png" alt="Symmetric Grid">
-				</section>
-			</section>
-
-			<section>
-				<section id="semantic-grid">
-					<h2>Semantic Grids</h2>
-					<p>Singularity is what we like to call a semantic grid system, meaning that instead of grid classes being generated that you then apply to your HTML, the grid is stored entirely within your CSS and applied directly to the element you want to use it on.</p>
-				</section>
-				<section id="grid-span-html">
-					<h2>Spanning The Grid - HTML</h2>
-
-					<pre><code class="language-markup">&lt;body&gt;
-  &lt;div class="main"&gt;Main Section&lt;/div&gt;
-  &lt;div class="first"&gt;First Section&lt;/div&gt;
-  &lt;div class="second"&gt;Second Section&lt;/div&gt;
-&lt;/body&gt;</code></pre>
-				</section>
-				<section id="grid-span-scss">
-					<h2>Spanning The Grid - Sass</h2>
-
-					<pre><code class="language-scss">// Simply pass the number of columns you'd like to span and what column you'd like to start from.
-
-$grids: 2 8 2;
-$gutters: 1/3;
-
-.first {
-  @include grid-span(1, 1);
-}
-
-.main {
-  @include grid-span(1, 2);
-}
-
-.second {
-  @include grid-span(1, 3);
-}</code></pre>
-				</section>
-				<section id="grid-span-display">
-					<h2>Spanning The Grid - Display</h2>
-					<img src="images/grid-span.png" alt="Grid Span display">
-				</section>
-			</section>
-
-			<section>
-				<section id="responsive-grids">
-					<h2>Responsive Grid Context - Sass</h2>
-
-					<pre><code class="language-scss">// add-grid allows you to automatically change your global Grid Context at various breakpoints
-
-$grids: 12;
-$grids: add-grid(2 8 2 at 700px);
-$gutters: 1/3;
-
-.first {
-  @include grid-span(3, 4);
-
-  @include breakpoint(700px) {
-    @include grid-span(1, 1);
-  }
-}
-
-.main {
-  @include grid-span(6, 7);
-
-  @include breakpoint(700px) {
-    @include grid-span(1, 2);
-  }
-}
-
-.second {
-  @include grid-span(3, 1);
-
-  @include breakpoint(700px) {
-    @include grid-span(1, 3);
-  }
-}</code></pre>
-				</section>
-				<section id="responsive-grids-display">
-					<h2>Responsive Grid Context - Display</h2>
-
-					<video src="videos/rwd-grid-context.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' autoplay loop></video>
-				</section>
-			</section>
-			<section>
-				<section id="nested-grid-html">
-					<h2>Nested Grids - HTML</h2>
-
-					<pre><code class="language-markup">&lt;body&gt;
-  &lt;div class="main"&gt;
-    &lt;div class="one"&gt;One&lt;/div&gt;
-    &lt;div class="two"&gt;Two&lt;/div&gt;
-    &lt;div class="three"&gt;
-      &lt;div class="a"&gt;Three A&lt;/div&gt;
-      &lt;div class="b"&gt;Three B&lt;/div&gt;
-      &lt;div class="c"&gt;Three C&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="four"&gt;Four&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="first"&gt;First Section&lt;/div&gt;
-  &lt;div class="second"&gt;Second Section&lt;/div&gt;
-&lt;/body&gt;</code></pre>
-				</section>
-				<section id="nested-grid-outer-scss">
-					<h2>Nested Grids (Outer Grid) - Sass</h2>
-
-					<pre><code class="language-scss">$grids: 2 8 2;
-$gutters: 1/3;
-
-.first {
-  @include grid-span(1, 1);
-}
-
-.main {
-  @include grid-span(1, 2);
-}
-
-.second {
-  @include grid-span(1, 3);
-}
-</code></pre>
-				</section>
-				<section id="nested-grid-outer-display">
-					<h2>Nested Grid (Outer Grid) - Display</h2>
-					<img src="images/nest-outer.png" alt="Nested Grids, Outer Grid">
-				</section>
-				<section id="nested-grid-inner-1-scss">
-					<h2>Nested Grids (First Nesting) - Sass</h2>
-
-					<pre><code class="language-scss">@include layout(8) {
-	.one {
-	  @include grid-span(1, 1);
-	}
-
-	.two {
-	  @include grid-span(1, 8);
-	}
-
-	.three {
-	  @include grid-span(6, 2);
-	}
-
-	.four {
-	  @include grid-span(2, 4);
-	  clear: both;
-	 }
-}</code></pre>
-				</section>
-				<section id="nested-grid-inner-1-display">
-					<h2>Nested Grid (First Nesting) - Display</h2>
-					<img src="images/nest-inner-1.png" alt="Nested Grids, First Nesting">
-				</section>
-				<section id="nested-grid-inner-2-scss">
-					<h2>Nested Grids (Second Nesting) - Sass</h2>
-
-					<pre><code class="language-scss">@include layout(6) {
-	.a {
-	  @include grid-span(2, 3);
-	}
-
-	.b {
-	  @include grid-span(2, 5);
-	}
-
-	.c {
-	  @include grid-span(2, 1);
-	}
-}</code></pre>
-				</section>
-				<section id="nested-grid-inner-2-display">
-					<h2>Nested Grid (Second Nesting) - Display</h2>
-					<img src="images/nest-inner-2.png" alt="Nested Grids, Second Nesting">
-				</section>
 			</section>
 
 			<!-- Fluid Media -->
