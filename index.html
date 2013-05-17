@@ -125,38 +125,329 @@
 					</section>
 				</section>
 
+				<section id="vanilla-sass">
+					<h1>II</h1>
+					<h2>RWD with Vanilla Sass</h2>
+				</section>
 				<section>
-					<section id="vanilla-sass">
-						<h1>II</h1>
-						<h2>RWD with Vanilla Sass</h2>
-					</section>
 					<section id="variables">
 						<h2>Variables and Math for Layouts</h2>
-						<pre><code class="language-scss">[code] show variables and layout code
-from grids meetup</code></pre>
+						<pre><code class="language-scss">$main-width: 50%;
+$aside-width: $main-width / 2;
+.grid-item {
+  float: left;
+}
+.main {
+  width: $main-width;
+  margin-left: $aside-width;
+}
+.side-one {
+  width: $aside-width;
+  margin-left: -#{$main-width + $aside-width};
+}
+.side-two {
+  width: $aside-width;
+  float: right;
+}
+.footer {
+  clear: both;
+  width: $main-width + $aside-width;
+  margin-left: $aside-width;
+}</code></pre>
 					</section>
+					<section id="variables-css">
+						<h2>Variables and Math for Layouts</h2>
+						<pre><code class="language-scss">.grid-item {
+  float: left;
+}
+.main {
+  clear: both;
+  width: 50%;
+  margin-left: 25%;
+}
+.side-one {
+  width: 25%;
+  margin-left: -75%;
+}
+.side-two {
+  width: 25%;
+  float: right;
+}
+.footer {
+  clear: both;
+  width: 75%;
+  margin-left: 25%;
+}</code></pre>
+					</section>
+				</section>
+				<section>
 					<section id="media-queries-gathered">
-						<h2>Media Queries: Gathered or Bubbled?</h2>
-						<pre><code class="language-scss">[code] gathered media queries - hard to follow</code></pre>
+						<h2>media queries: gathered or bubbled?</h2>
+						<pre><code class="language-scss">$two-col: 460px;
+$three-col: 800px;
+$main-width: 50%;
+$aside-width: $main-width / 2;
+
+// RESPONSIVE GRID STYLES
+@media (min-width: $two-col){
+  .grid-item {
+    float: left;
+  }
+  .main {
+    clear: both;
+    width: $main-width;
+    padding-right: 2em;
+  }
+  .side-one, .side-two {
+    width: $main-width;
+    clear: right;
+    float: right;
+    padding-left: 2em;
+  }
+  .footer {
+    clear: both;
+  }
+}
+@media (min-width: $three-col){
+  .main {
+    margin-left: $aside-width;
+    padding: 0 2em;
+  }
+  .side-one {
+    width: $aside-width;
+    float: left;
+    margin-left: -#{$main-width + $aside-width};
+    padding: 0 2em 0 0;
+  }
+  .side-two {
+    width: $aside-width;
+    float: right;
+    padding-left: 2em;
+  }
+  .footer {
+    width: $main-width + $aside-width;
+    margin-left: $aside-width;
+    padding-left: 2em;
+  }
+}</code></pre>
 					</section>
+					<section id="media-queries-gathered-css">
+						<h2>media queries: gathered or bubbled?</h2>
+						<pre><code class="language-scss">@media (min-width: 460px) {
+  .grid-item {
+    float: left;
+  }
+  .main {
+    clear: both;
+    width: 50%;
+    padding-right: 2em;
+  }
+  .side-one, .side-two {
+    width: 50%;
+    clear: right;
+    float: right;
+    padding-left: 2em;
+  }
+  .footer {
+    clear: both;
+  }
+}
+@media (min-width: 800px) {
+  .main {
+    margin-left: 25%;
+    padding: 0 2em;
+  }
+  .side-one {
+    width: 25%;
+    float: left;
+    margin-left: -75%;
+    padding: 0 2em 0 0;
+  }
+  .side-two {
+    width: 25%;
+    float: right;
+    padding-left: 2em;
+  }
+  .footer {
+    width: 75%;
+    margin-left: 25%;
+    padding-left: 2em;
+  }
+}</code></pre>
+					</section>
+				</section>
+				<section>
 					<section id="media-queries-bubbled">
 						<h2>Nesting and Media Bubbling</h2>
-						<pre><code class="language-scss">[code] nesting scss - how bubbling works</code></pre>
+						<pre><code class="language-scss">.main {
+  clear: both;
+  width: $main-width;
+  padding-right: 2em;
+  @media (min-width: $three-col) {
+    margin-left: $aside-width;
+    padding: 0 2em;
+  }
+}
+.side-one {
+  width: $main-width;
+  clear: right;
+  float: right;
+  padding-left: 2em;
+  @media (min-width: $three-col) {
+    width: $aside-width;
+    float: left;
+    margin-left: -#{$main-width + $aside-width};
+    padding: 0 2em 0 0;
+  }
+}
+.side-two {
+  @extend .side-one;
+  @media (min-width: $three-col) {
+    width: $aside-width;
+    float: right;
+    padding-left: 2em;
+  }
+}
+.footer {
+  clear: both;
+  @media (min-width: $three-col) {
+    width: $main-width + $aside-width;
+    margin-left: $aside-width;
+    padding-left: 2em;
+  }
+}</code></pre>
 					</section>
-					<section id="media-queries-breakpoints-tweakpoints">
-						<h2>Breakpoints vs Tweakpoints</h2>
-						<ul>
-							<li class="fragment">Breakpoints for large changes</li>
-							<li class="fragment">Tweakpoints for small adjustments</li>
-						</ul>
+					<section id="media-queries-bubbled-css">
+						<h2>Nesting and Media Bubbling</h2>
+						<pre><code class="language-scss">.main {
+  clear: both;
+  width: 50%;
+  padding-right: 2em;
+}
+@media (min-width: 800px) {
+  .main {
+    margin-left: 25%;
+    padding: 0 2em;
+  }
+}
+.side-one, .side-two {
+  width: 50%;
+  clear: right;
+  float: right;
+  padding-left: 2em;
+}
+@media (min-width: 800px) {
+  .side-one, .side-two {
+    width: 25%;
+    float: left;
+    margin-left: -75%;
+    padding: 0 2em 0 0;
+  }
+}
+@media (min-width: 800px) {
+  .side-two {
+    width: 25%;
+    float: right;
+    padding-left: 2em;
+  }
+}
+.footer {
+  clear: both;
+}
+@media (min-width: 800px) {
+  .footer {
+    width: 75%;
+    margin-left: 25%;
+    padding-left: 2em;
+  }
+}</code></pre>
 					</section>
+				</section>
+				<section id="media-queries-breakpoints-tweakpoints">
+					<h2>Breakpoints vs Tweakpoints</h2>
+					<ul>
+						<li class="fragment">Breakpoints for large changes</li>
+						<li class="fragment">Tweakpoints for small adjustments</li>
+					</ul>
+				</section>
+				<section>
 					<section id="media-queries-breakpoints">
 						<h2>Breakpoints for Layout Shifts</h2>
-						<pre><code class="language-scss">[code] show layout code again with breakpoints</code></pre>
+						<pre><code class="language-scss">.main {
+  clear: both;
+  width: $main-width;
+  padding-right: 2em;
+  @media (min-width: $three-col) {
+    margin-left: $aside-width;
+    padding: 0 2em;
+  }
+}
+.side-one {
+  width: $main-width;
+  clear: right;
+  float: right;
+  padding-left: 2em;
+  @media (min-width: $three-col) {
+    width: $aside-width;
+    float: left;
+    margin-left: -#{$main-width + $aside-width};
+    padding: 0 2em 0 0;
+  }
+}
+.side-two {
+  @extend .side-one;
+  @media (min-width: $three-col) {
+    width: $aside-width;
+    float: right;
+    padding-left: 2em;
+  }
+}
+.footer {
+  clear: both;
+  @media (min-width: $three-col) {
+    width: $main-width + $aside-width;
+    margin-left: $aside-width;
+    padding-left: 2em;
+  }
+ </code></pre>
 					</section>
 					<section id="media-queries-tweakpoints">
 						<h2>Micro changes with tweakpoints</h2>
-						<pre><code class="language-scss">[code] show adustments for small typographic shifts</code></pre>
+						<pre><code class="language-scss">h1 {
+  font-size: 1.5em;
+  @media (min-width: 46em) {
+    font-size: 2em;
+  }
+}
+article img {
+  margin: 0.5em;
+  border: 1px solid black;
+  @media (min-width: 52em) {
+    margin: 1em;
+    border-width: 3px;
+  }
+}</code></pre>
+					</section>
+					<section id="media-queries-tweakpoints-css">
+						<h2>Micro changes with tweakpoints</h2>
+						<pre><code class="language-scss">h1 {
+  font-size: 1.5em;
+}
+@media (min-width: 46em) {
+  h1 {
+    font-size: 2em;
+  }
+}
+article img {
+  margin: 0.5em;
+  border: 1px solid black;
+}
+@media (min-width: 52em) {
+  article img {
+    margin: 1em;
+    border-width: 3px;
+  }
+}</code></pre>
 					</section>
 				</section>
 
@@ -182,55 +473,125 @@ from grids meetup</code></pre>
 						<pre class="fragment"><code class="language-scss">require 'breakpoint'</code></pre>
 						<pre class="fragment"><code class="language-scss">@import 'breakpoint';</code></pre>
 					</section>
+				</section>
+				<section>
 					<section id="breakpoint-basic-single">
 						<h2>Basic Uses</h2>
 						<p>Single value - min-width</p>
 						<pre><code class="language-scss">[code] min</code></pre>
 					</section>
+					<section id="breakpoint-basic-single-css">
+						<h2>Basic Uses</h2>
+						<p>Single value - min-width</p>
+						<pre><code class="language-scss">[code] min css</code></pre>
+					</section>
+				</section>
+				<section>
 					<section id="breakpoint-basic-double">
 						<h2>Basic Uses</h2>
 						<p>Double value - min-max</p>
 						<pre><code class="language-scss">[code] fenced</code></pre>
 					</section>
+					<section id="breakpoint-basic-double-css">
+						<h2>Basic Uses</h2>
+						<p>Double value - min-max</p>
+						<pre><code class="language-scss">[code] fenced css</code></pre>
+					</section>
+				</section>
+				<section>
 					<section id="breakpoint-basic-explicit">
 						<h2>Basic Uses</h2>
 						<p>Explicit tests</p>
 						<pre><code class="language-scss">[code] explicit test</code></pre>
 					</section>
+					<section id="breakpoint-basic-explicit-css">
+						<h2>Basic Uses</h2>
+						<p>Explicit tests</p>
+						<pre><code class="language-scss">[code] explicit test css</code></pre>
+					</section>
+				</section>
+				<section>
 					<section id="breakpoint-advanced-media">
 						<h2>Advanced Uses</h2>
 						<p>Explicit Media Type</p>
 						<pre><code class="language-scss">[code] media type</code></pre>
 					</section>
+					<section id="breakpoint-advanced-media-css">
+						<h2>Advanced Uses</h2>
+						<p>Explicit Media Type</p>
+						<pre><code class="language-scss">[code] media type css</code></pre>
+					</section>
+				</section>
+				<section>
 					<section id="breakpoint-advanced-uncommon">
 						<h2>Advanced Uses</h2>
 						<p>Less-common tests</p>
 						<pre><code class="language-scss">[code] less-common tests</code></pre>
 					</section>
+					<section id="breakpoint-advanced-uncommon-css">
+						<h2>Advanced Uses</h2>
+						<p>Less-common tests</p>
+						<pre><code class="language-scss">[code] less-common tests css</code></pre>
+					</section>
+				</section>
+				<section>
 					<section id="breakpoint-advanced-aspect">
 						<h2>Advanced Uses</h2>
 						<p>Aspect ratio</p>
 						<pre><code class="language-scss">[code] Aspect ratio</code></pre>
 					</section>
+					<section id="breakpoint-advanced-aspect-css">
+						<h2>Advanced Uses</h2>
+						<p>Aspect ratio</p>
+						<pre><code class="language-scss">[code] Aspect ratio css</code></pre>
+					</section>
+				</section>
+				<section>
 					<section id="breakpoint-advanced-resolution">
 						<h2>Advanced Uses</h2>
 						<p>Resolution</p>
 						<pre><code class="language-scss">[code] resolution</code></pre>
 					</section>
+					<section id="breakpoint-advanced-resolution-css">
+						<h2>Advanced Uses</h2>
+						<p>Resolution</p>
+						<pre><code class="language-scss">[code] resolution css</code></pre>
+					</section>
+				</section>
+				<section>
 					<section id="breakpoint-advanced-fallbacks">
 						<h2>Advanced Uses</h2>
 						<p>Fallbacks</p>
 						<pre><code class="language-scss">[code] fallbacks</code></pre>
 					</section>
+					<section id="breakpoint-advanced-fallbacks-css">
+						<h2>Advanced Uses</h2>
+						<p>Fallbacks</p>
+						<pre><code class="language-scss">[code] fallbacks css</code></pre>
+					</section>
+				</section>
+				<section>
 					<section id="breakpoint-crazy-advanced-level4">
 						<h2>Crazy Advanced Uses</h2>
 						<p>CSS Level 4</p>
 						<pre><code class="language-scss">[code] CSS Level 4</code></pre>
 					</section>
+					<section id="breakpoint-crazy-advanced-level4-css">
+						<h2>Crazy Advanced Uses</h2>
+						<p>CSS Level 4</p>
+						<pre><code class="language-scss">[code] CSS Level 4 css</code></pre>
+					</section>
+				</section>
+				<section>
 					<section id="breakpoint-crazy-advanced-context">
 						<h2>Crazy Advanced Uses</h2>
 						<p>Context</p>
 						<pre><code class="language-scss">[code] Context</code></pre>
+					</section>
+					<section id="breakpoint-crazy-advanced-context-css">
+						<h2>Crazy Advanced Uses</h2>
+						<p>Context</p>
+						<pre><code class="language-scss">[code] Context css</code></pre>
 					</section>
 				</section>
 
