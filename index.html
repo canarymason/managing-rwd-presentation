@@ -451,6 +451,9 @@ article img {
 					</section>
 				</section>
 
+
+
+
 				<section>
 					<section id="breakpoint">
 						<h1>III</h1>
@@ -474,42 +477,219 @@ article img {
 						<pre class="fragment"><code class="language-scss">@import 'breakpoint';</code></pre>
 					</section>
 				</section>
+
+
 				<section>
+					<section id="breakpoint-basic-intro">
+						<h2>Basic Uses and Sensible Defaults</h2>
+					</section>
 					<section id="breakpoint-basic-single">
-						<h2>Basic Uses</h2>
-						<p>Single value - min-width</p>
-						<pre><code class="language-scss">[code] min</code></pre>
+						<h2>Single value = min-width</h2>
+						<p>Pass Breakpoint just a number and you get a min-width query.</p>
+						<small>by default</small>
+						<pre><code class="language-scss">$basic: 543px;
+
+#johnny-utah {
+  color: #C0FFEE;
+  @include breakpoint($basic) {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
 					<section id="breakpoint-basic-single-css">
-						<h2>Basic Uses</h2>
-						<p>Single value - min-width</p>
-						<pre><code class="language-scss">[code] min css</code></pre>
+						<h2>Single value = min-width</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#johnny-utah {
+  color: #C0FFEE;
+}
+@media (min-width: 543px) {
+  #johnny-utah {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-basic-single-em">
+						<h2>Convert Numbers to Ems</h2>
+						<p>for more accessible media queries</p>
+						<pre><code class="language-scss">$breakpoint-to-ems: true;
+$basic: 543px;
+
+#johnny-utah {
+  color: #C0FFEE;
+  @include breakpoint($basic) {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-basic-single-em-css">
+						<h2>Convert Numbers to Ems</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#johnny-utah {
+  color: #C0FFEE;
+}
+@media (min-width: 33.9375em) {
+  #johnny-utah {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
 				</section>
+
 				<section>
-					<section id="breakpoint-basic-double">
-						<h2>Basic Uses</h2>
-						<p>Double value - min-max</p>
-						<pre><code class="language-scss">[code] fenced</code></pre>
+					<section id="breakpoint-basic-fenced">
+						<h2>Fenced Values</h2>
+						<p>Two values creates a min-width / max-width query.</p>
+						<small>by default</small>
+						<pre><code class="language-scss">$fenced: 330px 750px;
+
+#bodhi {
+  color: #C0FFEE;
+  @include breakpoint($fenced) {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
-					<section id="breakpoint-basic-double-css">
-						<h2>Basic Uses</h2>
-						<p>Double value - min-max</p>
-						<pre><code class="language-scss">[code] fenced css</code></pre>
+					<section id="breakpoint-basic-fenced-css">
+						<h2>Fenced Values</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#bodhi {
+  color: #C0FFEE;
+}
+@media (min-width: 330px) and (max-width: 750px) {
+  #bodhi {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-basic-fenced-em">
+						<h2>Fenced Values</h2>
+						<p>Convert Numbers to Ems</p>
+						<pre><code class="language-scss">$breakpoint-to-ems: true;
+$fenced: 330px 750px;
+
+#bodhi {
+  color: #C0FFEE;
+  @include breakpoint($fenced) {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-basic-fenced-em-css">
+						<h2>Fenced Values</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#bodhi {
+  color: #C0FFEE;
+}
+@media (min-width: 20.625em) and (max-width: 46.875em) {
+  #bodhi {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
 				</section>
+
 				<section>
 					<section id="breakpoint-basic-explicit">
-						<h2>Basic Uses</h2>
-						<p>Explicit tests</p>
-						<pre><code class="language-scss">[code] explicit test</code></pre>
+						<h2>Explicit Test / Value</h2>
+						<p>If one value is a string, assume a feature/value pair</p>
+						<pre><code class="language-scss">$surfboard-width: max-width 1000px;
+
+#fifty-seven-chevy {
+  color: #C0FFEE;
+  @include breakpoint($surfboard-width) {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
 					<section id="breakpoint-basic-explicit-css">
-						<h2>Basic Uses</h2>
-						<p>Explicit tests</p>
-						<pre><code class="language-scss">[code] explicit test css</code></pre>
+						<h2>Explicit Test / Value</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#fifty-seven-chevy {
+  color: #C0FFEE;
+}
+@media (max-width: 1000px) {
+  #fifty-seven-chevy {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-basic-explicit-em">
+						<h2>Explicit Test / Value</h2>
+						<p>Convert Numbers to Ems</p>
+						<pre><code class="language-scss">$breakpoint-to-ems: true;
+$surfboard-width: max-width 1000px;
+
+#fifty-seven-chevy {
+  color: #C0FFEE;
+  @include breakpoint($surfboard-width) {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-basic-explicit-em-css">
+						<h2>Explicit Test / Value</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#fifty-seven-chevy {
+  color: #C0FFEE;
+}
+@media (max-width: 62.5em) {
+  #fifty-seven-chevy {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-basic-nonnumeric">
+						<h2>Explicit Test / Value</h2>
+						<p>This also works with non-numeric tests</p>
+						<pre><code class="language-scss">$quarterback: orientation portrait;
+#quarterback-punk {
+  color: #C0FFEE;
+  @include breakpoint($quarterback) {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-basic-nonnumeric-css">
+						<h2>Explicit Test / Value</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#quarterback-punk {
+  color: #C0FFEE;
+}
+@media (orientation: portrait) {
+  #quarterback-punk {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
 				</section>
+
+				<section>
+					<section id="breakpoint-basic-combine">
+						<h2>Combine Tests</h2>
+						<p>String them together to create more complex queries</p>
+						<pre><code class="language-scss">$combined: (max-width 1000px) (orientation portrait);
+
+#pappas {
+  color: #C0FFEE;
+  @include breakpoint($combined) {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-basic-combine-css">
+						<h2>Combine Tests</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#pappas {
+  color: #C0FFEE;
+}
+@media (max-width: 62.5em) and (orientation: portrait) {
+  #pappas {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
+				</section>
+
 				<section>
 					<section id="breakpoint-advanced-media">
 						<h2>Advanced Uses</h2>
