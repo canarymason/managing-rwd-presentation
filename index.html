@@ -15,8 +15,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
-		<!-- <link rel="stylesheet" href="css/snugug.css" id="theme"> -->
+		<!-- <link rel="stylesheet" href="css/theme/simple.css" id="theme"> -->
+		<link rel="stylesheet" href="css/snugug.css" id="theme">
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
@@ -134,9 +134,7 @@
 						<h2>Variables and Math for Layouts</h2>
 						<pre><code class="language-scss">$main-width: 50%;
 $aside-width: $main-width / 2;
-.grid-item {
-  float: left;
-}
+.grid-item { float: left; }
 .main {
   width: $main-width;
   margin-left: $aside-width;
@@ -148,18 +146,12 @@ $aside-width: $main-width / 2;
 .side-two {
   width: $aside-width;
   float: right;
-}
-.footer {
-  clear: both;
-  width: $main-width + $aside-width;
-  margin-left: $aside-width;
 }</code></pre>
 					</section>
 					<section id="variables-css">
 						<h2>Variables and Math for Layouts</h2>
-						<pre><code class="language-scss">.grid-item {
-  float: left;
-}
+						<p>compiled css</p>
+						<pre><code class="language-scss">.grid-item { float: left; }
 .main {
   clear: both;
   width: 50%;
@@ -172,107 +164,44 @@ $aside-width: $main-width / 2;
 .side-two {
   width: 25%;
   float: right;
-}
-.footer {
-  clear: both;
-  width: 75%;
-  margin-left: 25%;
 }</code></pre>
 					</section>
 				</section>
 				<section>
 					<section id="media-queries-gathered">
 						<h2>media queries: gathered or bubbled?</h2>
-						<pre><code class="language-scss">$two-col: 460px;
-$three-col: 800px;
-$main-width: 50%;
+						<pre><code class="language-scss">$two-col    : 460px;
+$three-col  : 800px;
+$main-width : 50%;
 $aside-width: $main-width / 2;
 
-// RESPONSIVE GRID STYLES
 @media (min-width: $two-col){
-  .grid-item {
-    float: left;
-  }
-  .main {
-    clear: both;
-    width: $main-width;
-    padding-right: 2em;
-  }
-  .side-one, .side-two {
-    width: $main-width;
-    clear: right;
-    float: right;
-    padding-left: 2em;
-  }
-  .footer {
-    clear: both;
-  }
+  .main { width: $main-width; }
+  .side-one, .side-two { width: $main-width; }
 }
 @media (min-width: $three-col){
-  .main {
-    margin-left: $aside-width;
-    padding: 0 2em;
-  }
+  .main { margin-left: $aside-width; }
   .side-one {
     width: $aside-width;
-    float: left;
     margin-left: -#{$main-width + $aside-width};
-    padding: 0 2em 0 0;
   }
-  .side-two {
-    width: $aside-width;
-    float: right;
-    padding-left: 2em;
-  }
-  .footer {
-    width: $main-width + $aside-width;
-    margin-left: $aside-width;
-    padding-left: 2em;
-  }
+  .side-two { width: $aside-width; }
 }</code></pre>
 					</section>
 					<section id="media-queries-gathered-css">
 						<h2>media queries: gathered or bubbled?</h2>
+						<p>compiled css</p>
 						<pre><code class="language-scss">@media (min-width: 460px) {
-  .grid-item {
-    float: left;
-  }
-  .main {
-    clear: both;
-    width: 50%;
-    padding-right: 2em;
-  }
-  .side-one, .side-two {
-    width: 50%;
-    clear: right;
-    float: right;
-    padding-left: 2em;
-  }
-  .footer {
-    clear: both;
-  }
+  .main { width: 50%; }
+  .side-one, .side-two { width: 50%; }
 }
 @media (min-width: 800px) {
-  .main {
-    margin-left: 25%;
-    padding: 0 2em;
-  }
+  .main { margin-left: 25%; }
   .side-one {
     width: 25%;
-    float: left;
     margin-left: -75%;
-    padding: 0 2em 0 0;
   }
-  .side-two {
-    width: 25%;
-    float: right;
-    padding-left: 2em;
-  }
-  .footer {
-    width: 75%;
-    margin-left: 25%;
-    padding-left: 2em;
-  }
+  .side-two { width: 25%; }
 }</code></pre>
 					</section>
 				</section>
@@ -482,6 +411,10 @@ article img {
 				<section>
 					<section id="breakpoint-basic-intro">
 						<h2>Basic Uses and Sensible Defaults</h2>
+						<blockquote>
+							<p>Nice Board. It looks like a '57 Chevy I used to own.</p>
+							<b>Bodhi</b>
+						</blockquote>
 					</section>
 					<section id="breakpoint-basic-single">
 						<h2>Single value = min-width</h2>
@@ -638,6 +571,31 @@ $surfboard-width: max-width 1000px;
   }
 }</code></pre>
 					</section>
+					<section id="breakpoint-basic-explicit-fenced">
+					  <h2>Min / Max Fencing an Explicit Test</h2>
+					  <p>
+					    A string grouped with two numbers will create a min/max query
+					  </p>
+					  <pre><code class="language-scss">$catch-bodhi: height 300px 700px;
+#no-parachute {
+  color: #C0FFEE;
+  @include breakpoint($catch-bodhi) {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-basic-explicit-fenced-css">
+					  <h2>Explicit Test / Value</h2>
+					  <p>compiled css</p>
+					  <pre><code class="language-scss">#no-parachute {
+  color: #C0FFEE;
+}
+@media (min-height: 18.75em) and (max-height: 43.75em) {
+  #no-parachute {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
 					<section id="breakpoint-basic-nonnumeric">
 						<h2>Explicit Test / Value</h2>
 						<p>This also works with non-numeric tests</p>
@@ -688,69 +646,352 @@ $surfboard-width: max-width 1000px;
   }
 }</code></pre>
 					</section>
+					<section id="breakpoint-basic-combine-long">
+					  <h2>Combine Lots of Tests</h2>
+					  <p>String them together to create more complex queries</p>
+					  <pre><code class="language-scss">$long: (500px) (height 700px 1000px) (orientation portrait) (monochrome);
+#warchild {
+  color: #C0FFEE;
+  @include breakpoint($long) {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-basic-combine-long-css">
+					  <h2>Combine Lots of Tests</h2>
+					  <p>compiled css</p>
+					  <pre><code class="language-scss">#warchild {
+  color: #C0FFEE;
+}
+@media (min-width: 31.25em) and (min-height: 43.75em) and (max-height: 62.5em) and (orientation: portrait) and (monochrome) {
+  #warchild {
+    color: #BADA55;
+  }
+}</code></pre>
+					</section>
 				</section>
 
 				<section>
-					<section id="breakpoint-advanced-media">
+					<section id="breakpoint-advanced-intro">
 						<h2>Advanced Uses</h2>
-						<p>Explicit Media Type</p>
-						<pre><code class="language-scss">[code] media type</code></pre>
+						<blockquote>
+							<p>The little hand says it's time to rock and roll.</p>
+							<b>Bodhi</b>
+						</blockquote>
+					</section>
+					<section id="breakpoint-advanced-media">
+						<h2>Explicit Media Type</h2>
+						<p>Breakpoint defaults to no specific media type, but you have total control over this too!</p>
+						<pre><code class="language-scss">$search-warrant: (print) (monochrome);
+$crime-wave: ('not tv') (max-width 1000px);
+#busted {
+  color: #C0FFEE;
+  @include breakpoint($search-warrant) {
+    color: #BADA55;
+  }
+}
+#get-away {
+  color: #C0FFEE;
+  @include breakpoint($crime-wave) {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
 					<section id="breakpoint-advanced-media-css">
-						<h2>Advanced Uses</h2>
-						<p>Explicit Media Type</p>
-						<pre><code class="language-scss">[code] media type css</code></pre>
+						<h2>Explicit Media Type</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#busted {
+  color: #C0FFEE;
+}
+@media print and (monochrome) {
+  #busted {
+    color: #BADA55;
+  }
+}
+#get-away {
+  color: #C0FFEE;
+}
+@media not tv and (max-width: 62.5em) {
+  #get-away {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
 				</section>
 				<section>
-					<section id="breakpoint-advanced-uncommon">
-						<h2>Advanced Uses</h2>
-						<p>Less-common tests</p>
-						<pre><code class="language-scss">[code] less-common tests</code></pre>
+					<section id="breakpoint-advanced-or">
+						<h2>"Or" Media Queries</h2>
+						<p>Separate test groups with a comma to create 'or' queries.</p>
+						<pre><code class="language-scss">$or: (500px) (max-height 1200px), 600px 700px;
+$or-media: (500px), (tv) (max-height 480px);
+#tktktk {
+  color: #C0FFEE;
+  @include breakpoint($or) {
+    color: #BADA55;
+  }
+}
+#tktktk {
+  color: #C0FFEE;
+  @include breakpoint($or-media) {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
-					<section id="breakpoint-advanced-uncommon-css">
-						<h2>Advanced Uses</h2>
-						<p>Less-common tests</p>
-						<pre><code class="language-scss">[code] less-common tests css</code></pre>
+					<section id="breakpoint-advanced-or-css">
+						<h2>"Or" Media Queries</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#tktktk {
+  color: #C0FFEE;
+}
+@media (min-width: 31.25em) and (max-height: 75em), (min-width: 37.5em) and (max-width: 43.75em) {
+  #tktktk {
+    color: #BADA55;
+  }
+}
+#tktktk {
+  color: #C0FFEE;
+}
+@media (min-width: 31.25em), tv and (max-height: 30em) {
+  #tktktk {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
 				</section>
 				<section>
 					<section id="breakpoint-advanced-aspect">
-						<h2>Advanced Uses</h2>
-						<p>Aspect ratio</p>
-						<pre><code class="language-scss">[code] Aspect ratio</code></pre>
+						<h2>Aspect ratio</h2>
+						<p>We have other tools besides width and height you know.</p>
+						<pre><code class="language-scss">$aspect-ratio: 'min-aspect-ratio' '3/4';
+$device-aspect-ratio: 'max-device-aspect-ratio' '16/9';
+#tktktk {
+  color: #C0FFEE;
+  @include breakpoint($aspect-ratio) {
+    color: #BADA55;
+  }
+}
+#tktktk {
+  color: #C0FFEE;
+  @include breakpoint($device-aspect-ratio) {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
 					<section id="breakpoint-advanced-aspect-css">
-						<h2>Advanced Uses</h2>
-						<p>Aspect ratio</p>
-						<pre><code class="language-scss">[code] Aspect ratio css</code></pre>
+						<h2>Aspect ratio</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#tktktk {
+  color: #C0FFEE;
+}
+@media (min-aspect-ratio: 3 / 4) {
+  #tktktk {
+    color: #BADA55;
+  }
+}
+#tktktk {
+  color: #C0FFEE;
+}
+@media (max-device-aspect-ratio: 16 / 9) {
+  #tktktk {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
 				</section>
 				<section>
 					<section id="breakpoint-advanced-resolution">
-						<h2>Advanced Uses</h2>
-						<p>Resolution</p>
-						<pre><code class="language-scss">[code] resolution</code></pre>
+						<h2>Resolution</h2>
+						<p>We prefer to use the dppx standard resolution unit, but we have you covered with fallbacks.</p>
+						<pre><code class="language-scss">$resolution: resolution 144dpi;
+$resolution-standard: resolution 2dppx;
+#tktktk {
+  color: #C0FFEE;
+  @include breakpoint($resolution) {
+    color: #BADA55;
+  }
+}
+#tktktk {
+  color: #C0FFEE;
+  @include breakpoint($resolution-standard) {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
 					<section id="breakpoint-advanced-resolution-css">
-						<h2>Advanced Uses</h2>
-						<p>Resolution</p>
-						<pre><code class="language-scss">[code] resolution css</code></pre>
+						<h2>Resolution</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#tktktk {
+  color: #C0FFEE;
+}
+@media (resolution: 144dpi), (-webkit-device-pixel-ratio: 1.5), (-moz-device-pixel-ratio: 1.5) {
+  #tktktk {
+    color: #BADA55;
+  }
+}
+
+#tktktk {
+  color: #C0FFEE;
+}
+@media (resolution: 2dppx), (-webkit-device-pixel-ratio: 2), (-moz-device-pixel-ratio: 2), (resolution: 192dpi) {
+  #tktktk {
+    color: #BADA55;
+  }
+}
+</code></pre>
 					</section>
 				</section>
 				<section>
-					<section id="breakpoint-advanced-fallbacks">
-						<h2>Advanced Uses</h2>
-						<p>Fallbacks</p>
-						<pre><code class="language-scss">[code] fallbacks</code></pre>
+					<section id="breakpoint-advanced-fallbacks-original-file">
+						<h2>Fallbacks</h2>
+						<p>We need to account for under-powered browsers too, and we have a few different ways to handle that</p>
+						<p>Use a fallback selector in the same stylesheet.</p>
+						<pre><code class="language-scss">$breakpoint-no-query-fallbacks: true;
+$simple: (500px), 'no-query' '.no-mq';
+$touch: pointer coarse, 'no-query' '.touch';
+#tktktk {
+  color: #C0FFEE;
+  @include breakpoint($simple) {
+    color: #BADA55;
+  }
+}
+#tktktk {
+  color: #C0FFEE;
+  @include breakpoint($touch) {
+    color: #BADA55;
+  }
+}</code></pre>
 					</section>
-					<section id="breakpoint-advanced-fallbacks-css">
-						<h2>Advanced Uses</h2>
-						<p>Fallbacks</p>
-						<pre><code class="language-scss">[code] fallbacks css</code></pre>
+					<section id="breakpoint-advanced-fallbacks-original-file-css">
+						<h2>Fallbacks</h2>
+						<p>compiled css</p>
+						<pre><code class="language-scss">#tktktk {
+  color: #C0FFEE;
+}
+@media (min-width: 31.25em) {
+  #tktktk {
+    color: #BADA55;
+  }
+}
+.no-mq #tktktk {
+  color: #BADA55;
+}
+#tktktk {
+  color: #C0FFEE;
+}
+@media (pointer: coarse) {
+  #tktktk {
+    color: #BADA55;
+  }
+}
+.touch #tktktk {
+  color: #BADA55;
+}</code></pre>
+					</section>
+					<section id="breakpoint-advanced-fallbacks-separate-file">
+					  <h2>Fallbacks in Separate Styesheets</h2>
+					  <p>Create separate stylesheets for your fallbacks.</p>
+					  <pre><code class="language-scss">// _my-partial.scss
+$touch: pointer coarse, 'no-query' '.touch';
+#tktktk {
+  color: #C0FFEE;
+  @include breakpoint($touch) {
+    color: #BADA55;
+  }
+}</code></pre>
+					  <pre><code class="language-scss">// main.scss
+@import "my-partial";</code></pre>
+					  <pre><code class="language-scss">// fallback.scss
+// Will not print media queries
+$breakpoint-no-queries: true;
+// Will print No Query Fallbacks
+$breakpoint-no-query-fallbacks: true;
+
+@import "my-partial";</code></pre>
+					</section>
+					<section id="breakpoint-advanced-fallbacks-separate-file-css">
+					  <h2>Fallbacks in Separate Styesheets</h2>
+					  <p>compiled css</p>
+					  <pre><code class="language-scss">#tktktk {
+  color: #C0FFEE;
+}
+@media (pointer: coarse) {
+  #tktktk {
+    color: #BADA55;
+  }
+}</code></pre>
+					  <pre><code class="language-scss">#tktktk {
+  color: #C0FFEE;
+}
+.touch #tktktk {
+  color: #BADA55;
+}</code></pre>
+					</section>
+					<section id="breakpoint-advanced-fallbacks-separate-specific-file">
+					  <h2>Fallbacks in Separate Specific Styesheets</h2>
+					  <p>Create separate specific stylesheets for your fallbacks.</p>
+					  <pre><code class="language-scss">// _my-partial.scss
+$simple: (500px), 'no-query' '.no-mq';
+$touch: pointer coarse, 'no-query' '.touch';
+#tktktk {
+  color: #C0FFEE;
+  @include breakpoint($simple) {
+    color: #BADA55;
+  }
+}
+#tktktk {
+  color: #C0FFEE;
+  @include breakpoint($touch) {
+    color: #BADA55;
+  }
+}</code></pre>
+					  <pre><code class="language-scss">// main.scss
+@import "my-partial";</code></pre>
+					  <pre><code class="language-scss">// touch.scss
+// Will not print media queries
+$breakpoint-no-queries: true;
+// Will print No Query Fallbacks
+$breakpoint-no-query-fallbacks: '.touch';
+
+@import "my-partial";</code></pre>
+					</section>
+					<section id="breakpoint-advanced-fallbacks-separate-specific-file-css">
+					  <h2>Fallbacks in Separate Specific Styesheets</h2>
+					  <p>compiled css</p>
+					  <pre><code class="language-scss">#tktktk {
+  color: #C0FFEE;
+}
+@media (min-width: 31.25em) {
+  #tktktk {
+    color: #BADA55;
+  }
+}
+#tktktk {
+  color: #C0FFEE;
+}
+@media (pointer: coarse) {
+  #tktktk {
+    color: #BADA55;
+  }
+}</code></pre>
+					  <pre><code class="language-scss">#tktktk {
+  color: #C0FFEE;
+}
+.touch #tktktk {
+  color: #BADA55;
+}</code></pre>
+					</section>
 					</section>
 				</section>
 				<section>
+					<section id="breakpoint-crazy-advanced-intro">
+						<h2>Crazy Advanced Uses</h2>
+						<blockquote>
+							<p>100% Pure Adrenaline</p>
+							<b>Bodhi</b>
+						</blockquote>
+					</section>
+				</section>
+				<!-- <section>
 					<section id="breakpoint-crazy-advanced-level4">
 						<h2>Crazy Advanced Uses</h2>
 						<p>CSS Level 4</p>
@@ -761,19 +1002,83 @@ $surfboard-width: max-width 1000px;
 						<p>CSS Level 4</p>
 						<pre><code class="language-scss">[code] CSS Level 4 css</code></pre>
 					</section>
+				</section> -->
+				<section>
+					<section id="breakpoint-crazy-advanced-bubbling">
+						<h2>Bubbling with Breakpoint</h2>
+						<p>Bubbling</p>
+						<pre><code class="language-scss">$width: 500px;
+$height: (min-height 700px);
+$resolution: resolution 144dpi;
+#tktktk {
+  color: #C0FFEE;
+  @include breakpoint($width) {
+    color: #BADA55;
+    @include breakpoint($height) {
+      color: #FFFFFF;
+      @include breakpoint($resolution) {
+        color: #000000;
+      }
+    }
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-crazy-advanced-bubbling-css">
+						<h2>Bubbling with Breakpoint</h2>
+						<p>Compiled CSS</p>
+						<pre><code class="language-scss">#tktktk {
+  color: #C0FFEE;
+}
+@media (min-width: 31.25em) {
+  #tktktk {
+    color: #BADA55;
+  }
+}
+@media (min-width: 31.25em) and (min-height: 43.75em) {
+  #tktktk {
+    color: #FFFFFF;
+  }
+}
+@media (min-width: 31.25em) and (min-height: 43.75em) and (resolution: 144dpi), (min-width: 31.25em) and (min-height: 43.75em) and (-webkit-device-pixel-ratio: 1.5), (min-width: 31.25em) and (min-height: 43.75em) and (-moz-device-pixel-ratio: 1.5) {
+  #tktktk {
+    color: #000000;
+  }
+}</code></pre>
+					</section>
 				</section>
 				<section>
 					<section id="breakpoint-crazy-advanced-context">
-						<h2>Crazy Advanced Uses</h2>
-						<p>Context</p>
-						<pre><code class="language-scss">[code] Context</code></pre>
+						<h2>Breakpoint Context</h2>
+						<p>Grab the context of a media query from within a mixin or function. </p>
+						<pre><code class="language-scss">$basic: 700px (height 600px 800px) (orientation landscape);
+
+#tktktk {
+  @include breakpoint($basic) {
+    content: 'min-height:' breakpoint-get-context('min-height');
+    content: 'orientation:' breakpoint-get-context('orientation');
+    content: 'max-width: ' breakpoint-get-context('max-width');
+  }
+}</code></pre>
 					</section>
 					<section id="breakpoint-crazy-advanced-context-css">
-						<h2>Crazy Advanced Uses</h2>
+						<h2>Breakpoint Context</h2>
 						<p>Context</p>
-						<pre><code class="language-scss">[code] Context css</code></pre>
+						<pre><code class="language-scss">@media (min-width: 43.75em) and (min-height: 37.5em) and (max-height: 50em) and (orientation: landscape) {
+  #tktktk {
+    content: "min-height:" 600px;
+    content: "orientation:" landscape;
+    content: "max-width: " false;
+  }
+}</code></pre>
 					</section>
 				</section>
+				<section id="utah-whoa">
+					<img src="images/whoa.gif" alt="whoa.">
+				</section>
+
+
+
+
 
 				<section>
 					<section id="singularity">
