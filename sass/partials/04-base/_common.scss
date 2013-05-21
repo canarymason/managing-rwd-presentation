@@ -101,6 +101,26 @@ blockquote {
     font-size: ms(8);
     @include text-shadow(rgba($black, 0.5) 2px 2px 4px);
   }
+  &.bodhi {
+    background-color: $black-true;
+    background-image: image-url('bodhi-fire.gif');
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    b {
+      background-color: rgba($black, 0.5);
+      border-top: 1px solid rgba($white, 0.1);
+    }
+  }
+  &.utah {
+      text-align: center;
+    img {
+      border: 0.25em solid rgba($white, 0.5);
+      margin-bottom: 1em;
+    }
+    b {
+      text-align: center;
+    }
+  }
   p {
     line-height: 1.5 !important;
     &:first-of-type {

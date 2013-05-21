@@ -46,11 +46,14 @@
 			<div class="slides">
 
 				<section>
-					<h1>Managing Responsive Web Design With Sass And Breakpoint</h1>
+					<h1 class="session-title">Managing Responsive Web Design With Sass And Breakpoint</h1>
 				</section>
 
 				<section class="quote" id="rwd-is-hard">
-					<h1>Of Course Responsive Web Design is Hard. It's Design.</h1>
+					<blockquote>
+						<p>Of Course Responsive Web Design is Hard. It's Design.
+							<b class="fragment">Me</b></p>
+					</blockquote>
 				</section>
 
 				<section id="us">
@@ -351,7 +354,7 @@ article img {
 				<section>
 					<section id="breakpoint-basic-intro">
 						<h2>Basic Uses and Sensible Defaults</h2>
-						<blockquote>
+						<blockquote class="bodhi">
 							<p>Nice Board. It looks like a '57 Chevy I used to own.</p>
 							<b>Bodhi</b>
 						</blockquote>
@@ -620,7 +623,7 @@ $basic: 543px;
 				<section>
 					<section id="breakpoint-advanced-intro">
 						<h2>Advanced Uses</h2>
-						<blockquote>
+						<blockquote class="bodhi">
 							<p>The little hand says it's time to rock and roll.</p>
 							<b>Bodhi</b>
 						</blockquote>
@@ -666,7 +669,7 @@ $crime-wave: ('not tv') (max-width 1000px);
 				</section>
 				<section>
 					<section id="breakpoint-advanced-or">
-						<h2>"Or" Media Queries</h2>
+						<h2><span class="fancy">&ldquo;</span>Or<span class="fancy">&rdquo;</span> Media Queries</h2>
 						<p>Separate test groups with a comma to create 'or' queries.</p>
 						<pre><code class="language-scss">$or: (500px) (max-height 1200px), 600px 700px;
 $or-media: (500px), (tv) (max-height 480px);
@@ -684,7 +687,7 @@ $or-media: (500px), (tv) (max-height 480px);
 }</code></pre>
 					</section>
 					<section id="breakpoint-advanced-or-css">
-						<h2>"Or" Media Queries</h2>
+						<h2><span class="fancy">&ldquo;</span>Or<span class="fancy">&rdquo;</span> Media Queries</h2>
 						<p>compiled css</p>
 						<pre><code class="language-scss">#tktktk {
   color: #C0FFEE;
@@ -931,7 +934,7 @@ $breakpoint-no-query-fallbacks: '.touch';
 				<section>
 					<section id="breakpoint-crazy-advanced-intro">
 						<h2>Crazy Advanced Uses</h2>
-						<blockquote>
+						<blockquote class="bodhi">
 							<p>100% Pure Adrenaline</p>
 							<b>Bodhi</b>
 						</blockquote>
@@ -1019,7 +1022,11 @@ $resolution: resolution 144dpi;
 					</section>
 				</section>
 				<section id="utah-whoa">
-					<img src="images/whoa.gif" alt="whoa.">
+					<blockquote class="utah">
+						<img src="images/utah-thumb.gif" alt="whoa.">
+						<!-- <p>Nice Board. It looks like a '57 Chevy I used to own.</p> -->
+						<b>Johnny Utah</b>
+					</blockquote>
 				</section>
 
 
@@ -1333,385 +1340,6 @@ $gutters: 1/3;
 
 
 
-
-
-
-				<section data-state="the-web">
-					<section id="past-web" data-source="http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/" data-cite="Brad Frost">
-						<img src="images/past.png" alt="This is not the web">
-					</section>
-					<section id="present-web" data-source="http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/" data-cite="Brad Frost">
-						<img src="images/present.png" alt="This is the web">
-					</section>
-					<section id="future-web" data-source="http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/" data-cite="Brad Frost">
-						<img src="images/future.png" alt="This will be the web">
-					</section>
-
-					<aside class="notes">
-						The point of creating [responsive] sites is to create functional (and hopefully optimal) user experiences for a growing number of web-enabled devices and contexts.
-					</aside>
-				</section>
-
-				<section>
-					<section id="you-should">
-						<h2>You Should Also…</h2>
-					</section>
-					<section id="sass-compass">
-						<p>Have a familiarity with <a href="sass-lang.com">Sass</a>+<a href="compass-style.org">Compass</a></p>
-					</section>
-					<section id="modern-css">
-						<p>Have a familiarity with <a href="http://www.w3.org/TR/2001/WD-css3-roadmap-20010523/">Modern CSS</a></p>
-					</section>
-					<section id="pixel-perfect">
-						<p>Have thrown away the phrase "Pixel Perfect"</p>
-					</section>
-				</section>
-
-				<section class="quote" id="unstable-medium">
-					<blockquote cite="http://www.ripariandata.com/mail-room-blog/blog/an-event-apart-sf-recap-the-message-is-the-medium">
-						<p>The Web is an Inherently Unstable Medium</p>
-						<b>Ethan Marcotte</b>
-					</blockquote>
-
-					<aside class="notes">
-						Let's Embrace the Entropy
-					</aside>
-				</section>
-
-				<section id="rwd-needs">
-					<h2>What Do You Need for RWD?</h2>
-
-					<p>As outlined in Ethan Marcotte's <a href="http://www.alistapart.com/articles/responsive-web-design/">Phrase-Coining A List Apart article</a>, Responsive Web Design needs the three following things:</p>
-
-					<ul class="fragments">
-						<li class="fragment">Media Queries</li>
-						<li class="fragment">Fluid Grids</li>
-						<li class="fragment">Flexible Media</li>
-					</ul>
-				</section>
-
-				<section id="extension-basics">
-					<h2>Using Compass Extensions</h2>
-
-					<pre class="fragment"><code class="language-scss">> gem install {extension}</code></pre>
-
-					<pre class="fragment"><code class="language-scss">require '{extension}'</code></pre>
-
-					<pre class="fragment"><code class="language-scss">@import '{extension}';</code></pre>
-				</section>
-
-				<!-- Media Queries -->
-				<section id="media-queries">
-					<h1>Media Queries</h1>
-				</section>
-
-				<section class="quote" id="small-screen-first">
-					<blockquote cite="http://bradfrostweb.com/blog/mobile/bdconf-stephen-hay-presents-responsive-design-workflow/">
-						<p>Start with the small screen first, then expand until it looks like shit.</p>
-						<p>TIME FOR A BREAKPOINT!</p>
-						<b>Stephen Hay</b>
-					</blockquote>
-				</section>
-
-				<section id="breakpoint">
-					<h2><a href="https://github.com/team-sass/breakpoint">Breakpoint</a></h2>
-
-					<pre class="fragment"><code class="language-scss">> gem install breakpoint</code></pre>
-
-					<pre class="fragment"><code class="language-scss">require 'breakpoint'</code></pre>
-
-					<pre class="fragment"><code class="language-scss">@import 'breakpoint';</code></pre>
-				</section>
-
-				<section>
-					<section id="basic-queries-sass">
-						<h2>Basic Media Queries - Sass</h2>
-
-						<pre><code class="language-scss">// Your basic media queries, min-width and min/max width, are super easy!
-$small: 543px;
-$medium: 794px;
-$fence-sm: $small $medium;
-
-#foo {
-  content: 'No Media Queries';
-
-  @include breakpoint($small) {
-    content: 'Small Media Query';
-  }
-
-  @include breakpoint($fence-sm) {
-    content: 'Fenced Media Query';
-  }
-}</code></pre>
-					</section>
-					<section id="basic-queries-css">
-						<h2>Basic Media Queries - CSS</h2>
-
-						<pre><code class="language-scss"> /* Nested Breakpoint calls become separate media queries */
-#foo {
-  content: 'No Media Queries';
-}
-
-@media (min-width: 543px) {
-	#foo {
-		content: 'Small Media Query';
-	}
-}
-
-@media (min-width: 543px) and (max-width: 794px) {
-	#foo {
-		content: 'Fenced Media Query';
-	}
-}
-</code></pre>
-					</section>
-					<section id="basic-queries-em">
-						<h2>Basic Media Queries - CSS</h2>
-
-						<pre><code class="language-scss"> /* Setting $breakpoint-to-ems: true will write Media Queries in Ems! */
-@media (min-width: 33.9375em) {
-	#foo {
-		content: 'Small Media Query';
-	}
-}
-
-@media (min-width: 33.9375em) and (max-width: 49.625em) {
-	#foo {
-		content: 'Fenced Media Query';
-	}
-}
-</code></pre>
-					</section>
-				</section>
-
-				<section>
-					<section id="advanced-queries-sass">
-						<h2>Advanced Media Queries - Sass</h2>
-
-						<pre><code class="language-scss">// Advanced "and" media queries and "or" media queries made simple
-$print-land: print monochrome (orientation landscape);
-
-$fenced-landscape: screen 321px 543px, handheld (orientation portrait);
-
-#foo {
-  @include breakpoint($print-land) {
-    content: 'Monochrome Print in Landscape';
-  }
-
-  @include breakpoint($fence-landscape) {
-    content: 'Screen media type between 300px and 500px or Handheld media type in Portrait';
-  }
-}</code></pre>
-					</section>
-					<section id="advanced-queries-css">
-						<h2>Advanced Media Queries - CSS</h2>
-
-						<pre><code class="language-scss"> /* Advanced "and" media queries and "or" media queries made simple */
-@media print and (monochrome) and (orientation: landscape) {
-	#foo {
-		content: 'Monochrome Print in Landscape';
-	}
-}
-
-@media screen and (min-width: 321px) and (max-width: 543px), handheld and (orientation: portrait) {
-	#foo {
-		content: 'Screen media type between 300px and 500px or Handheld media type in Portrait';
-	}
-}
-</code></pre>
-					</section>
-				</section>
-
-				<section>
-					<section id="resolution-queries-sass">
-						<h2>Resolution Media Queries - Sass</h2>
-
-						<pre><code class="language-scss">// Resolution media queries are a pain. Breakpoint makes them easy. We use the standard DPPX units.
-$hidpi: min-resolution 1.5dppx;
-$cross-reso: max-resolution 143dpi;
-
-#foo {
-  @include breakpoint($hidpi) {
-    content: 'Device Pixel Ratio of at least 1.5';
-  }
-
-  @include breakpoint($cross-reso) {
-  	content: 'Cross Browser Resolution Query'
-  }
-}</code></pre>
-					</section>
-					<section id="resolution-queries-css">
-						<h2>Resolution Media Queries - CSS</h2>
-
-						<pre><code class="language-scss"> /* Breakpoint will transform the DPPX unit into cross-browser compatible resolution queries and DPI units into cross-browser DPR queries! */
-@media (min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
-  #foo {
-    content: 'Device Pixel Ratio of at least 1.5';
-  }
-}
-
-@media (max-resolution: 143dpi), (-webkit-max-device-pixel-ratio: 1.48958), (max--moz-device-pixel-ratio: 1.48958) {
-  #foo {
-    content: "Cross Browser Resolution Query";
-  }
-}
-</code></pre>
-					</section>
-				</section>
-
-				<section>
-					<section id="no-query-partial-sass">
-						<h2>Media Query Fallbacks - Sass</h2>
-
-						<pre><code class="language-scss">// _mqs.scss
-$touch: pointer coarse, 'no-query' '.touch';
-$no-queries: 678px, 'no-query' '.no-mqs';
-
-#foo {
-  @include breakpoint($touch) {
-    content: 'Touch Device';
-  }
-  @include breakpoint($no-queries) {
-  	content: 'No Media Queries';
-	}
-}</code></pre>
-					</section>
-					<section id="no-query-import-sass">
-						<h2>Media Query Fallbacks - Sass</h2>
-
-						<pre><code class="language-scss">// style.scss
-$breakpoint-no-queries:         false;
-$breakpoint-no-query-fallbacks: false;
-
-@import "mqs";</code></pre>
-
-					<pre><code class="language-scss">// touch.scss
-$breakpoint-no-queries:         true;
-$breakpoint-no-query-fallbacks: '.touch';
-
-@import "mqs";</code></pre>
-					</section>
-					<section id="no-query-css">
-						<h2>Media Query Fallbacks - CSS</h2>
-
-						<pre><code class="language-scss">/* style.css */
-/* Only the Media Query gets printed out here! */
-@media (pointer: coarse) {
-  #foo {
-  	content: 'Touch Device';
-	}
-}</code></pre>
-
-					<pre><code class="language-scss">/* touch.css */
-/* Only the Meida Queries with a .touch no-fallback get printed! */
-.touch #foo {
-	content: 'Touch Device';
-}
-</code></pre>
-					</section>
-				</section>
-
-				<!-- Fluid Grids -->
-				<section id="fluid-grids">
-					<h1>Fluid Grids</h1>
-				</section>
-
-				<section>
-
-			</section>
-
-			<!-- Fluid Media -->
-			<section id="fluid-media">
-				<h1>Fluid Media</h1>
-			</section>
-
-			<section id="toolkit">
-				<h2><a href="https://github.com/team-sass/toolkit">Toolkit</a></h2>
-
-				<pre class="fragment"><code class="language-scss">> gem install toolkit</code></pre>
-
-				<pre class="fragment"><code class="language-scss">require 'toolkit'</code></pre>
-
-				<pre class="fragment"><code class="language-scss">@import 'toolkit';</code></pre>
-			</section>
-
-			<section>
-				<section id="fluid-media-basic">
-					<h2>Basic Fluid Media</h2>
-
-					<pre><code class="language-scss">// Making images and HTML5 video fluid is pretty easy.
-
-img, video {
-	max-width: 100%;
-	height: auto;
-}</code></pre>
-				</section>
-
-				<section id="intrinsic-ratios-sass">
-					<h2>Intrinsic Ratios - Sass</h2>
-
-					<pre><code class="language-scss">// Using [Intrinisc Ratios](http://alistapart.com/article/creating-intrinsic-ratios-for-video), you can even make embedded videos fluid!
-
-.fluid-16-9 {
-  @include intrinsic-ratio;
-}
-.fluid-4-3 {
-	@include intrinsic-ratio(4/3);
-}
-</code></pre>
-					<pre><code class="language-markup">&lt;body&gt;
-  &lt;div class="fluid-16-9"&gt;
-    &lt;iframe width="560" height="315" src="http://www.youtube.com/embed/hHloF85dQZg?rel=0" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
-  &lt;/div&gt;
-&lt;/body&gt;</code></pre>
-				</section>
-
-				<section id="intrinsic-ratios-css">
-					<h2>Intrinsic Ratios - CSS</h2>
-
-					<pre><code class="language-scss">/* Intrinsic Ratio code is built for a small code footprint, so shared code is extended. */
-.fluid-16-9, .fluid-4-3 {
-  position: relative;
-  height: 0;
-}
-
-.fluid-16-9 > *, .fluid-4-3 > * {
-  display: block;
-  position: absolute;
-  width: 100% !important;
-  height: 100% !important;
-  top: 0;
-  margin: 0;
-  padding: 0;
-}
-
-.fluid-16-9 {
-  padding-top: 56.25%;
-  width: 100%;
-}
-
-.fluid-4-3 {
-  padding-top: 75%;
-  width: 100%;
-}</code></pre>
-				</section>
-				<section id="intrinsic-ratios-display">
-					<h2>Intrinsic Ratios - Display</h2>
-
-					<video src="videos/irs.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' controls></video>
-				</section>
-			</section>
-
-			<section id="did-i-mention">
-				<h2>Did I Mention?</h2>
-				<p>Everything you just saw? Yah, it's backend independent. You can use it anywhere, with anything, for any project. Sass Rocks</p>
-			</section>
-
-			<section id="thank-you">
-				<h1>Thank You</h1>
-				<p>Slides available at</p>
-				<p><strong>http://snugug.github.io/RWD-with-Sass-Compass/</strong></p>
-			</section>
 
 
 			</div>
