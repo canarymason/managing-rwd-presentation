@@ -16,7 +16,8 @@
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<!-- <link rel="stylesheet" href="css/theme/simple.css" id="theme"> -->
-		<link rel="stylesheet" href="css/snugug.css" id="theme">
+		<!-- <link rel="stylesheet" href="css/snugug.css" id="theme"> -->
+		<link rel="stylesheet" href="css/rwd-drupal.css" id="theme">
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
@@ -55,12 +56,12 @@
 				<section id="us">
 					<h2>Who Are We?</h2>
 
-					<ul class="fragments small">
-						<li class="fragment">Mason Wendell<ul>
+					<ul class="fragments ">
+						<li class="fragment no-dash"><h4>Mason Wendell</h4></li>
 						<li class="fragment">Sr. Front End Developer, NBC Universal</li>
 						<li class="fragment">codingdesigner on <a href="http://twitter.com/codingdesigner"> Twitter</a>, canarymason on <a href="http://github.com/canarymason">GitHub</a>. <br/> <a href="http://thecodingdesigner.com">TheCodingDesigner.com</a></li>
-						<li class="fragment">Co-Organizer of <a href="github.com/team-sass">Team Sass</a>, Organizer of <a href="http://www.meetup.com/Philadelphia-SASS-Meetup-Group/">Philly Sass Meetup</a> and <a href="http://www.meetup.com/Responsive-Web-Design-Philadelphia/">Philly RWD Meetup</a></li></ul></li>
-						<li class="fragment">Sam Richard<ul>
+						<li class="fragment">Co-Organizer of <a href="github.com/team-sass">Team Sass</a>, Organizer of <a href="http://www.meetup.com/Philadelphia-SASS-Meetup-Group/">Philly Sass Meetup</a> and <a href="http://www.meetup.com/Responsive-Web-Design-Philadelphia/">Philly RWD Meetup</a></li>
+						<li class="fragment no-dash"><h4>Sam Richard</h4></li>
 						<li class="fragment">Sr. Front End Developer, NBC Universal</li>
 						<li class="fragment">Snugug on <a href="http://twitter.com/snugug"> Twitter</a>, <a href="http://github.com/snugug">GitHub</a>, <a href="http://snugug.com">The Internet</a></li>
 						<li class="fragment">Co-Organizer of <a href="github.com/team-sass">Team Sass</a>, <a href="http://sassconf.com">SassConf</a></li></ul></li>
@@ -70,20 +71,23 @@
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section id="assumptions">
-						<h1>I</h1>
-						<h2>Let’s Get a Few Things Straight Right Off the Bat, Buddy</h2>
+						<h1 class="section-marker">I</h1>
+						<h2>Let’s Get a Few Things Straight.</h2>
 					</section>
 					<section id="experiment-setup">
-						<h2>Hold up your hand if you own a smartphone.</h2>
+						<h3>Hold up your hand if you own a smartphone.</h3>
 					</section>
 					<section id="experiment-commence">
-						<h2>Lower it if you have the same make and model phone as your neighbors</h2>
+						<h3>Lower it if you have the same make and model phone as your neighbors</h3>
 					</section>
 					<section id="experiment-finale">
 						<a href="http://knowyourmeme.com/memes/thats-racist"><img src="images/thats-racist.gif" alt="That's Devicest"/></a>
 					</section>
 					<section id="unknown-unknowns">
-						<h2>Responsive Web Design isn’t about current devices and known unknowns, it’s about future devices and unknown unknowns.</h2>
+						<blockquote>
+							<p>Responsive Web Design isn’t about current devices and known unknowns, it’s about future devices and unknown unknowns.</p>
+							<b class="fragment">Donald Rumsfeld</b>
+						</blockquote>
 					</section>
 				</section>
 				<section>
@@ -116,7 +120,7 @@
 						<h2>We know Sass.</h2>
 					</section>
 					<section id="know-a-little-sass">
-						<h2>We know <em>a little</em> Sass.</h2>
+						<h2>Let's learn some Sass.</h2>
 						<ul>
 							<li class="fragment">You're familiar with variables and nesting.</li>
 							<li class="fragment">You've used some mixins.</li>
@@ -126,7 +130,7 @@
 				</section>
 
 				<section id="vanilla-sass">
-					<h1>II</h1>
+					<h1 class="section-marker">II</h1>
 					<h2>RWD with Vanilla Sass</h2>
 				</section>
 				<section>
@@ -208,150 +212,85 @@ $aside-width: $main-width / 2;
 				<section>
 					<section id="media-queries-bubbled">
 						<h2>Nesting and Media Bubbling</h2>
-						<pre><code class="language-scss">.main {
-  clear: both;
-  width: $main-width;
-  padding-right: 2em;
-  @media (min-width: $three-col) {
-    margin-left: $aside-width;
-    padding: 0 2em;
+						<p>In many cases it's more intuitive to keep your media queries with what they're altering.</p>
+						<pre><code class="language-scss">.menu {
+  padding: 10px;
+  @media (min-width: 500px) {
+    padding: 100px;
   }
 }
-.side-one {
-  width: $main-width;
-  clear: right;
-  float: right;
-  padding-left: 2em;
-  @media (min-width: $three-col) {
-    width: $aside-width;
-    float: left;
-    margin-left: -#{$main-width + $aside-width};
-    padding: 0 2em 0 0;
-  }
-}
-.side-two {
-  @extend .side-one;
-  @media (min-width: $three-col) {
-    width: $aside-width;
-    float: right;
-    padding-left: 2em;
-  }
-}
-.footer {
-  clear: both;
-  @media (min-width: $three-col) {
-    width: $main-width + $aside-width;
-    margin-left: $aside-width;
-    padding-left: 2em;
+.subnav {
+  padding: 5px;
+  @media (min-width: 500px) {
+    padding: 25px;
   }
 }</code></pre>
 					</section>
 					<section id="media-queries-bubbled-css">
 						<h2>Nesting and Media Bubbling</h2>
-						<pre><code class="language-scss">.main {
-  clear: both;
-  width: 50%;
-  padding-right: 2em;
+						<p>compiled css</p>
+						<pre><code class="language-scss">.menu {
+  padding: 10px;
 }
-@media (min-width: 800px) {
-  .main {
-    margin-left: 25%;
-    padding: 0 2em;
+@media (min-width: 500px) {
+  .menu {
+    padding: 100px;
   }
 }
-.side-one, .side-two {
-  width: 50%;
-  clear: right;
-  float: right;
-  padding-left: 2em;
+.subnav {
+  padding: 5px;
 }
-@media (min-width: 800px) {
-  .side-one, .side-two {
-    width: 25%;
-    float: left;
-    margin-left: -75%;
-    padding: 0 2em 0 0;
-  }
-}
-@media (min-width: 800px) {
-  .side-two {
-    width: 25%;
-    float: right;
-    padding-left: 2em;
-  }
-}
-.footer {
-  clear: both;
-}
-@media (min-width: 800px) {
-  .footer {
-    width: 75%;
-    margin-left: 25%;
-    padding-left: 2em;
+@media (min-width: 500px) {
+  .subnav {
+    padding: 25px;
   }
 }</code></pre>
+					</section>
+					<section>
+						<h1 class="fragment kaboom">NO.</h1>
+						<h2>Is this a problem?</h2>
 					</section>
 				</section>
 				<section id="media-queries-breakpoints-tweakpoints">
 					<h2>Breakpoints vs Tweakpoints</h2>
 					<ul>
-						<li class="fragment">Breakpoints for large changes</li>
-						<li class="fragment">Tweakpoints for small adjustments</li>
+						<li class="fragment"><h3>Breakpoints for large changes</h3></li>
+						<li class="fragment"><h3>Tweakpoints for small adjustments</h3></li>
 					</ul>
 				</section>
 				<section>
 					<section id="media-queries-breakpoints">
 						<h2>Breakpoints for Layout Shifts</h2>
-						<pre><code class="language-scss">.main {
-  clear: both;
-  width: $main-width;
-  padding-right: 2em;
-  @media (min-width: $three-col) {
-    margin-left: $aside-width;
-    padding: 0 2em;
-  }
+						<pre><code class="language-scss">$two-col    : 460px;
+$three-col  : 800px;
+$main-width : 50%;
+$aside-width: $main-width / 2;
+
+@media (min-width: $two-col){
+  .main { width: $main-width; }
+  .side-one, .side-two { width: $main-width; }
 }
-.side-one {
-  width: $main-width;
-  clear: right;
-  float: right;
-  padding-left: 2em;
-  @media (min-width: $three-col) {
+@media (min-width: $three-col){
+  .main { margin-left: $aside-width; }
+  .side-one {
     width: $aside-width;
-    float: left;
     margin-left: -#{$main-width + $aside-width};
-    padding: 0 2em 0 0;
   }
-}
-.side-two {
-  @extend .side-one;
-  @media (min-width: $three-col) {
-    width: $aside-width;
-    float: right;
-    padding-left: 2em;
-  }
-}
-.footer {
-  clear: both;
-  @media (min-width: $three-col) {
-    width: $main-width + $aside-width;
-    margin-left: $aside-width;
-    padding-left: 2em;
-  }
- </code></pre>
+  .side-two { width: $aside-width; }
+}</code></pre>
 					</section>
 					<section id="media-queries-tweakpoints">
 						<h2>Micro changes with tweakpoints</h2>
 						<pre><code class="language-scss">h1 {
   font-size: 1.5em;
-  @media (min-width: 46em) {
+  @media (min-width: 500px) {
     font-size: 2em;
   }
 }
 article img {
   margin: 0.5em;
   border: 1px solid black;
-  @media (min-width: 52em) {
+  @media (min-width: 700px) {
     margin: 1em;
     border-width: 3px;
   }
@@ -359,10 +298,11 @@ article img {
 					</section>
 					<section id="media-queries-tweakpoints-css">
 						<h2>Micro changes with tweakpoints</h2>
+						<p>compiled css</p>
 						<pre><code class="language-scss">h1 {
   font-size: 1.5em;
 }
-@media (min-width: 46em) {
+@media (min-width: 500px) {
   h1 {
     font-size: 2em;
   }
@@ -371,7 +311,7 @@ article img {
   margin: 0.5em;
   border: 1px solid black;
 }
-@media (min-width: 52em) {
+@media (min-width: 700px) {
   article img {
     margin: 1em;
     border-width: 3px;
@@ -385,7 +325,7 @@ article img {
 
 				<section>
 					<section id="breakpoint">
-						<h1>III</h1>
+						<h1 class="section-marker">III</h1>
 						<h2>Breakpoint</h2>
 						<p><a href="http://breakpoint-sass.com">breakpoint-sass.com</a></p>
 					</section>
@@ -399,8 +339,8 @@ article img {
             </ul>
 					</section>
 					<section id="breakpoint-install">
-						<h2>Using Compass Extensions</h2>
-						<h2><a href="https://github.com/team-sass/breakpoint">Breakpoint</a></h2>
+						<h2>Using Breakpoint</h2>
+						<h3><a href="https://github.com/team-sass/breakpoint">github.com/team-sass/breakpoint</a></h3>
 						<pre class="fragment"><code class="language-scss">> gem install breakpoint</code></pre>
 						<pre class="fragment"><code class="language-scss">require 'breakpoint'</code></pre>
 						<pre class="fragment"><code class="language-scss">@import 'breakpoint';</code></pre>
@@ -467,6 +407,62 @@ $basic: 543px;
 }</code></pre>
 					</section>
 				</section>
+				<section>
+					<section id="put-it-together">
+						<h2>Why again is this cool?</h2>
+						<p class="fragment">Remember this?</p>
+						<pre class="fragment"><code class="language-scss">.menu {
+  padding: 10px;
+  @media (min-width: 500px) {
+    padding: 100px;
+  }
+}
+.subnav {
+  padding: 5px;
+  @media (min-width: 500px) {
+    padding: 25px;
+  }
+}</code></pre>
+					</section>
+					<section id="put-it-together-2">
+						<h2>Why again is this cool?</h2>
+						<p>Now let's use Breakpoint</p>
+						<pre><code class="language-scss">$menu-room-for-air: 500px;
+.menu {
+  padding: 10px;
+  @include breakpoint($menu-room-for-air) {
+    padding: 100px;
+  }
+}
+.subnav {
+  padding: 5px;
+  @include breakpoint($menu-room-for-air) {
+    padding: 25px;
+  }
+}</code></pre>
+					</section>
+					<section id="put-it-together-css">
+						<h2>Why again is this cool?</h2>
+						<p>compiled css</p>
+						<pre><code class="language-css">.menu {
+  padding: 10px;
+}
+@media (min-width: 31.25em) {
+  .menu {
+    padding: 100px;
+  }
+}
+
+.subnav {
+  padding: 5px;
+}
+@media (min-width: 31.25em) {
+  .subnav {
+    padding: 25px;
+  }
+}</code></pre>
+					</section>
+				</section>
 
 				<section>
 					<section id="breakpoint-basic-fenced">
@@ -489,31 +485,6 @@ $basic: 543px;
   color: #C0FFEE;
 }
 @media (min-width: 330px) and (max-width: 750px) {
-  #bodhi {
-    color: #BADA55;
-  }
-}</code></pre>
-					</section>
-					<section id="breakpoint-basic-fenced-em">
-						<h2>Fenced Values</h2>
-						<p>Convert Numbers to Ems</p>
-						<pre><code class="language-scss">$breakpoint-to-ems: true;
-$fenced: 330px 750px;
-
-#bodhi {
-  color: #C0FFEE;
-  @include breakpoint($fenced) {
-    color: #BADA55;
-  }
-}</code></pre>
-					</section>
-					<section id="breakpoint-basic-fenced-em-css">
-						<h2>Fenced Values</h2>
-						<p>compiled css</p>
-						<pre><code class="language-scss">#bodhi {
-  color: #C0FFEE;
-}
-@media (min-width: 20.625em) and (max-width: 46.875em) {
   #bodhi {
     color: #BADA55;
   }
@@ -546,31 +517,6 @@ $fenced: 330px 750px;
   }
 }</code></pre>
 					</section>
-					<section id="breakpoint-basic-explicit-em">
-						<h2>Explicit Test / Value</h2>
-						<p>Convert Numbers to Ems</p>
-						<pre><code class="language-scss">$breakpoint-to-ems: true;
-$surfboard-width: max-width 1000px;
-
-#fifty-seven-chevy {
-  color: #C0FFEE;
-  @include breakpoint($surfboard-width) {
-    color: #BADA55;
-  }
-}</code></pre>
-					</section>
-					<section id="breakpoint-basic-explicit-em-css">
-						<h2>Explicit Test / Value</h2>
-						<p>compiled css</p>
-						<pre><code class="language-scss">#fifty-seven-chevy {
-  color: #C0FFEE;
-}
-@media (max-width: 62.5em) {
-  #fifty-seven-chevy {
-    color: #BADA55;
-  }
-}</code></pre>
-					</section>
 					<section id="breakpoint-basic-explicit-fenced">
 					  <h2>Min / Max Fencing an Explicit Test</h2>
 					  <p>
@@ -590,7 +536,7 @@ $surfboard-width: max-width 1000px;
 					  <pre><code class="language-scss">#no-parachute {
   color: #C0FFEE;
 }
-@media (min-height: 18.75em) and (max-height: 43.75em) {
+@media (min-height: 300px) and (max-height: 700px) {
   #no-parachute {
     color: #BADA55;
   }
@@ -640,7 +586,7 @@ $surfboard-width: max-width 1000px;
 						<pre><code class="language-scss">#pappas {
   color: #C0FFEE;
 }
-@media (max-width: 62.5em) and (orientation: portrait) {
+@media (max-width: 1000px) and (orientation: portrait) {
   #pappas {
     color: #BADA55;
   }
@@ -663,7 +609,7 @@ $surfboard-width: max-width 1000px;
 					  <pre><code class="language-scss">#warchild {
   color: #C0FFEE;
 }
-@media (min-width: 31.25em) and (min-height: 43.75em) and (max-height: 62.5em) and (orientation: portrait) and (monochrome) {
+@media (min-width: 500px) and (min-height: 700px) and (max-height: 1000px) and (orientation: portrait) and (monochrome) {
   #warchild {
     color: #BADA55;
   }
@@ -711,7 +657,7 @@ $crime-wave: ('not tv') (max-width 1000px);
 #get-away {
   color: #C0FFEE;
 }
-@media not tv and (max-width: 62.5em) {
+@media not tv and (max-width: 1000px) {
   #get-away {
     color: #BADA55;
   }
@@ -743,7 +689,7 @@ $or-media: (500px), (tv) (max-height 480px);
 						<pre><code class="language-scss">#tktktk {
   color: #C0FFEE;
 }
-@media (min-width: 31.25em) and (max-height: 75em), (min-width: 37.5em) and (max-width: 43.75em) {
+@media (min-width: 500px) and (max-height: 1200px), (min-width: 600px) and (max-width: 700px) {
   #tktktk {
     color: #BADA55;
   }
@@ -751,7 +697,7 @@ $or-media: (500px), (tv) (max-height 480px);
 #tktktk {
   color: #C0FFEE;
 }
-@media (min-width: 31.25em), tv and (max-height: 30em) {
+@media (min-width: 500px), tv and (max-height: 480px) {
   #tktktk {
     color: #BADA55;
   }
@@ -867,7 +813,7 @@ $touch: pointer coarse, 'no-query' '.touch';
 						<pre><code class="language-scss">#tktktk {
   color: #C0FFEE;
 }
-@media (min-width: 31.25em) {
+@media (min-width: 500px) {
   #tktktk {
     color: #BADA55;
   }
@@ -960,7 +906,7 @@ $breakpoint-no-query-fallbacks: '.touch';
 					  <pre><code class="language-scss">#tktktk {
   color: #C0FFEE;
 }
-@media (min-width: 31.25em) {
+@media (min-width: 500px) {
   #tktktk {
     color: #BADA55;
   }
@@ -1029,17 +975,17 @@ $resolution: resolution 144dpi;
 						<pre><code class="language-scss">#tktktk {
   color: #C0FFEE;
 }
-@media (min-width: 31.25em) {
+@media (min-width: 500px) {
   #tktktk {
     color: #BADA55;
   }
 }
-@media (min-width: 31.25em) and (min-height: 43.75em) {
+@media (min-width: 500px) and (min-height: 700px) {
   #tktktk {
     color: #FFFFFF;
   }
 }
-@media (min-width: 31.25em) and (min-height: 43.75em) and (resolution: 144dpi), (min-width: 31.25em) and (min-height: 43.75em) and (-webkit-device-pixel-ratio: 1.5), (min-width: 31.25em) and (min-height: 43.75em) and (-moz-device-pixel-ratio: 1.5) {
+@media (min-width: 500px) and (min-height: 700px) and (resolution: 144dpi), (min-width: 500px) and (min-height: 700px) and (-webkit-device-pixel-ratio: 1.5), (min-width: 500px) and (min-height: 700px) and (-moz-device-pixel-ratio: 1.5) {
   #tktktk {
     color: #000000;
   }
@@ -1063,7 +1009,7 @@ $resolution: resolution 144dpi;
 					<section id="breakpoint-crazy-advanced-context-css">
 						<h2>Breakpoint Context</h2>
 						<p>Context</p>
-						<pre><code class="language-scss">@media (min-width: 43.75em) and (min-height: 37.5em) and (max-height: 50em) and (orientation: landscape) {
+						<pre><code class="language-scss">@media (min-width: 700px) and (min-height: 600px) and (max-height: 800px) and (orientation: landscape) {
   #tktktk {
     content: "min-height:" 600px;
     content: "orientation:" landscape;
@@ -1082,7 +1028,7 @@ $resolution: resolution 144dpi;
 
 				<section>
 					<section id="singularity">
-						<h1>IV</h1>
+						<h1 class="section-marker">IV</h1>
 						<h2>Singularity</h2>
 						<p><a href="http://http://singularity.gs/">singularity.gs</a></p>
 					</section>
@@ -1317,7 +1263,7 @@ $gutters: 1/3;
 
 				<section>
 					<section id="team-sass">
-						<h1>V</h1>
+						<h1 class="section-marker">V</h1>
 						<h2>Whoa.</h2>
 					</section>
 					<section id="thank-you">
@@ -1327,7 +1273,7 @@ $gutters: 1/3;
 						<p><a href="http://http://singularity.gs/">singularity.gs</a></p>
 						<p><a href="https://github.com/team-sass">github.com/team-sass</a></p>
 						<p>Slides available at</p>
-						<p><a href="tktktk">tktktk</a></p>
+						<p><a href="http://canarymason.github.io/managing-rwd-presentation/">canarymason.github.io/managing-rwd-presentation</a></p>
 						<blockquote>Stop When it Looks Good.</blockquote>
 					</section>
 				</section>

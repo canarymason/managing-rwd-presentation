@@ -1,0 +1,38 @@
+// DEFAULT COLORS
+$black              : #1f1f1f;
+$gray-dark          : #262626;
+$white-off          : shade(white, 10%);
+$white              : white;
+$blue-slate         : #28303D;
+$blue               : #42A3D1;
+$orange             : #ff6c0a;
+$yellow             : #F3EC44;
+$green              : #BBEB8F;
+$pink               : hotpink;
+
+
+
+
+
+
+
+// Color variables expected 04-base
+$base-color: $black;
+$text-color: $white;
+$alt-color: $blue;
+$background-color: $blue-slate;
+$border-color: $black;
+
+
+// link colors
+$link-normal: $blue;
+$link-hover: $white;
+$link-active: $white;
+$link-visited: $blue;
+$link-focus: $blue;
+$link-border-normal: $blue;
+$link-border-hover: $white;
+$link-border-active: $white;
+$link-border-visited: $blue;
+
+
