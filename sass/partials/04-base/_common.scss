@@ -101,6 +101,33 @@ blockquote {
     font-size: ms(8);
     @include text-shadow(rgba($black, 0.5) 2px 2px 4px);
   }
+  p {
+    line-height: 1.5 !important;
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+  b {
+    // @extend %h5;
+    font-family: $font-serifs;
+    text-align: right;
+    font-style: italic;
+    display: block;
+    background-color: $blue;
+    padding: 0.5em;
+    border-top: 1px solid $white;
+    letter-spacing: 1px;
+    margin-top: 0.25em;
+    &:before {
+      content: '~';
+    }
+    &.fragment {
+      display: none;
+      &[data-fragment-index] {
+        display: block;
+      }
+    }
+  }
   &.bodhi {
     background-color: $black-true;
     background-image: image-url('bodhi-fire.gif');
@@ -119,32 +146,6 @@ blockquote {
     }
     b {
       text-align: center;
-    }
-  }
-  p {
-    line-height: 1.5 !important;
-    &:first-of-type {
-      margin-top: 0;
-    }
-  }
-  b {
-    // @extend %h5;
-    font-family: $font-serifs;
-    text-align: right;
-    font-style: italic;
-    display: block;
-    background-color: $blue;
-    padding: 0.5em;
-    border-top: 1px solid $white;
-    letter-spacing: 1px;
-    &:before {
-      content: '~';
-    }
-    &.fragment {
-      display: none;
-      &[data-fragment-index] {
-        display: block;
-      }
     }
   }
 }
