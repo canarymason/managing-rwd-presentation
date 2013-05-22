@@ -87,6 +87,16 @@
   }
 }
 
+#singularity {
+  @extend #breakpoint;
+}
+
+#media-queries-breakpoints-tweakpoints {
+  li {
+    text-align: center;
+  }
+}
+
 #pagecounter {
   position: absolute;
   left: 1em;

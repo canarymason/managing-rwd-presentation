@@ -61,6 +61,8 @@
       font-size: nth($header-sizes, 3);
     }
   }
+  margin: 0.125em 0;
+  line-height: 1.1;
 }
 
 %h4 {

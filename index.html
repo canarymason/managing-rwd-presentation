@@ -47,6 +47,7 @@
 
 				<section>
 					<h1 class="session-title">Managing Responsive Web Design With Sass And Breakpoint</h1>
+          <h1 class="">And Singularity</h1>
 				</section>
 
 				<section class="quote" id="rwd-is-hard">
@@ -124,15 +125,13 @@
 					</section>
 					<section id="know-sass">
 						<h2>We know Sass.</h2>
-					</section>
-					<section id="know-a-little-sass">
-						<h2>Let's learn some Sass together.</h2>
-						<ul>
-							<li class="fragment">You're familiar with variables and nesting.</li>
-							<li class="fragment">You've used some mixins.</li>
-							<li class="fragment">You've hopefully tried Compass.</li>
-						</ul>
-					</section>
+            <ul>
+              <li class="fragment">You're familiar with variables and nesting.</li>
+              <li class="fragment">You've used some mixins.</li>
+              <li class="fragment">You've hopefully tried Compass.</li>
+            </ul>
+						<h3 class="fragment">Let's learn some Sass together.</h3>
+          </section>
 				</section>
 
 				<section id="vanilla-sass">
@@ -288,7 +287,7 @@ $basic: 500px;
 				<section>
 					<section id="put-it-together">
 						<h2>Why again is this cool?</h2>
-						<p class="fragment">Remember this?</p>
+						<h3 class="fragment">Remember this?</h3>
 						<pre class="fragment"><code class="language-scss">.menu {
   padding: 10px;
   @media (min-width: 500px) {
@@ -304,7 +303,7 @@ $basic: 500px;
 					</section>
 					<section id="put-it-together-2">
 						<h2>Why again is this cool?</h2>
-						<p>Now let's use Breakpoint</p>
+						<h3>Now let's use Breakpoint</h3>
 						<pre><code class="language-scss">$menu-room-for-air: 500px;
 .menu {
   padding: 10px;
@@ -321,7 +320,7 @@ $basic: 500px;
 					</section>
 					<section id="put-it-together-3">
 						<h2>Why again is this cool?</h2>
-						<p><strong class="fancy">OH NO!</strong> WE NEED TO CHANGE SOMETHING!</p>
+						<h3><strong class="fancy">OH NO!</strong> WE NEED TO CHANGE SOMETHING!</h3>
 						<pre><code class="language-scss">$menu-room-for-air: 642px;
 .menu {
   padding: 10px;
@@ -624,18 +623,11 @@ $breakpoint-no-query-fallbacks: true; // Will print No Query Fallbacks
   color: #BADA55;
 }</code></pre>
           </section>
-          <section id="breakpoint-crazy-advanced-fallbacks-separate-specific-file">
+          <!-- <section id="breakpoint-crazy-advanced-fallbacks-separate-specific-file">
             <h2>Fallbacks in Separate Specific Styesheets</h2>
             <p>Create separate specific stylesheets for your fallbacks.</p>
             <pre><code class="language-scss">// _my-partial.scss
-$simple: (500px), 'no-query' '.no-mq';
 $touch: pointer coarse, 'no-query' '.touch';
-#tktktk {
-  color: #C0FFEE;
-  @include breakpoint($simple) {
-    color: #BADA55;
-  }
-}
 #tktktk {
   color: #C0FFEE;
   @include breakpoint($touch) {
@@ -645,27 +637,14 @@ $touch: pointer coarse, 'no-query' '.touch';
             <pre><code class="language-scss">// main.scss
 @import "my-partial";</code></pre>
             <pre><code class="language-scss">// touch.scss
-// Will not print media queries
 $breakpoint-no-queries: true;
-// Will print No Query Fallbacks
 $breakpoint-no-query-fallbacks: '.touch';
-
 @import "my-partial";</code></pre>
-          </section>
-          <section id="breakpoint-crazy-advanced-fallbacks-separate-specific-file-css">
+          </section> -->
+          <!-- <section id="breakpoint-crazy-advanced-fallbacks-separate-specific-file-css">
             <h2>Fallbacks in Separate Specific Styesheets</h2>
             <p>compiled css</p>
-            <pre><code class="language-scss">#tktktk {
-  color: #C0FFEE;
-}
-@media (min-width: 500px) {
-  #tktktk {
-    color: #BADA55;
-  }
-}
-#tktktk {
-  color: #C0FFEE;
-}
+            <pre><code class="language-scss">#tktktk { color: #C0FFEE; }
 @media (pointer: coarse) {
   #tktktk {
     color: #BADA55;
@@ -677,7 +656,7 @@ $breakpoint-no-query-fallbacks: '.touch';
 .touch #tktktk {
   color: #BADA55;
 }</code></pre>
-          </section>
+          </section> -->
           </section>
 
 				<section>
@@ -750,28 +729,27 @@ $resolution-standard: resolution 2dppx; // dots per ‘px’ unit
 					<section id="breakpoint-advanced-resolution-css">
 						<h2>Resolution</h2>
 						<p>compiled css</p>
-						<pre><code class="language-scss">#tktktk {
-  color: #C0FFEE;
-}
+						<pre><code class="language-scss">#tktktk { color: #C0FFEE; }
+
 @media (resolution: 192dpi), (-webkit-device-pixel-ratio: 2), (-moz-device-pixel-ratio: 2) {
-  #tktktk {
-    color: #BADA55;
-  }
+  #tktktk { color: #BADA55; }
 }
 
-#tktktk {
-  color: #C0FFEE;
-}
+// dppx
+#tktktk { color: #C0FFEE; }
 @media (resolution: 2dppx), (-webkit-device-pixel-ratio: 2), (-moz-device-pixel-ratio: 2), (resolution: 192dpi) {
-  #tktktk {
-    color: #BADA55;
-  }
+  #tktktk { color: #BADA55; }
 }
 </code></pre>
 					</section>
 				</section>
 
 				</section>
+
+
+
+
+
 				<section>
 					<section id="breakpoint-crazy-advanced-intro">
 						<h2>Crazy Advanced Uses</h2>
