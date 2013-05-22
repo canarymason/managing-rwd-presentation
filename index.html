@@ -510,49 +510,7 @@ $basic: 500px;
 }</code></pre>
 					</section>
 				</section>
-        <!-- <section>
-          <section id="breakpoint-advanced-bubbling">
-            <h2>Bubbling with Breakpoint</h2>
-            <p>Bubbling</p>
-            <pre><code class="language-scss">$width: 500px;
-$height: (min-height 700px);
-$resolution: resolution 144dpi;
-#tktktk {
-  color: #C0FFEE;
-  @include breakpoint($width) {
-    color: #BADA55;
-    @include breakpoint($height) {
-      color: #FFFFFF;
-      @include breakpoint($resolution) {
-        color: #000000;
-      }
-    }
-  }
-}</code></pre>
-          </section>
-          <section id="breakpoint-crazy-advanced-bubbling-css">
-            <h2>Bubbling with Breakpoint</h2>
-            <p>Compiled CSS</p>
-            <pre><code class="language-scss">#tktktk {
-  color: #C0FFEE;
-}
-@media (min-width: 500px) {
-  #tktktk {
-    color: #BADA55;
-  }
-}
-@media (min-width: 500px) and (min-height: 700px) {
-  #tktktk {
-    color: #FFFFFF;
-  }
-}
-@media (min-width: 500px) and (min-height: 700px) and (resolution: 144dpi), (min-width: 500px) and (min-height: 700px) and (-webkit-device-pixel-ratio: 1.5), (min-width: 500px) and (min-height: 700px) and (-moz-device-pixel-ratio: 1.5) {
-  #tktktk {
-    color: #000000;
-  }
-}</code></pre>
-          </section>
-        </section> -->
+
 
         <section id="breakpoint-advanced-intro">
           <h2>Going Deeper</h2>
@@ -570,7 +528,7 @@ $resolution: resolution 144dpi;
             <pre><code class="language-scss">$breakpoint-no-query-fallbacks: true;
 $touch: pointer coarse, 'no-query' '.touch';
 
-#tktktk {
+#fallback {
   color: #C0FFEE;
   @include breakpoint($touch) {
     color: #BADA55;
@@ -580,21 +538,21 @@ $touch: pointer coarse, 'no-query' '.touch';
           <section id="breakpoint-crazy-advanced-fallbacks-original-file-css">
             <h2>Fallbacks</h2>
             <p>compiled css</p>
-            <pre><code class="language-scss">#tktktk { color: #C0FFEE; }
+            <pre><code class="language-scss">#fallback { color: #C0FFEE; }
 
 @media (pointer: coarse) {
-  #tktktk {
+  #fallback {
     color: #BADA55;
   }
 }
-.touch #tktktk { color: #BADA55; }</code></pre>
+.touch #fallback { color: #BADA55; }</code></pre>
           </section>
           <section id="breakpoint-crazy-advanced-fallbacks-separate-file">
             <h2>Fallbacks in Separate Styesheets</h2>
             <p>Create separate stylesheets for your fallbacks.</p>
             <pre><code class="language-scss">// _my-partial.scss
 $touch: pointer coarse, 'no-query' '.touch';
-#tktktk {
+#fallback {
   color: #C0FFEE;
   @include breakpoint($touch) { color: #BADA55; }
 }</code></pre>
@@ -608,55 +566,22 @@ $breakpoint-no-query-fallbacks: true; // Will print No Query Fallbacks
           <section id="breakpoint-crazy-advanced-fallbacks-separate-file-css">
             <h2>Fallbacks in Separate Styesheets</h2>
             <p>compiled css</p>
-            <pre><code class="language-scss">#tktktk {
+            <pre><code class="language-scss">#fallback {
   color: #C0FFEE;
 }
 @media (pointer: coarse) {
-  #tktktk {
+  #fallback {
     color: #BADA55;
   }
 }</code></pre>
-            <pre><code class="language-scss">#tktktk {
+            <pre><code class="language-scss">#fallback {
   color: #C0FFEE;
 }
-.touch #tktktk {
+.touch #fallback {
   color: #BADA55;
 }</code></pre>
           </section>
-          <!-- <section id="breakpoint-crazy-advanced-fallbacks-separate-specific-file">
-            <h2>Fallbacks in Separate Specific Styesheets</h2>
-            <p>Create separate specific stylesheets for your fallbacks.</p>
-            <pre><code class="language-scss">// _my-partial.scss
-$touch: pointer coarse, 'no-query' '.touch';
-#tktktk {
-  color: #C0FFEE;
-  @include breakpoint($touch) {
-    color: #BADA55;
-  }
-}</code></pre>
-            <pre><code class="language-scss">// main.scss
-@import "my-partial";</code></pre>
-            <pre><code class="language-scss">// touch.scss
-$breakpoint-no-queries: true;
-$breakpoint-no-query-fallbacks: '.touch';
-@import "my-partial";</code></pre>
-          </section> -->
-          <!-- <section id="breakpoint-crazy-advanced-fallbacks-separate-specific-file-css">
-            <h2>Fallbacks in Separate Specific Styesheets</h2>
-            <p>compiled css</p>
-            <pre><code class="language-scss">#tktktk { color: #C0FFEE; }
-@media (pointer: coarse) {
-  #tktktk {
-    color: #BADA55;
-  }
-}</code></pre>
-            <pre><code class="language-scss">#tktktk {
-  color: #C0FFEE;
-}
-.touch #tktktk {
-  color: #BADA55;
-}</code></pre>
-          </section> -->
+
           </section>
 
 				<section>
@@ -687,18 +612,18 @@ $breakpoint-no-query-fallbacks: '.touch';
 					<h2><span class="fancy">&ldquo;</span>Or<span class="fancy">&rdquo;</span> Media Queries</h2>
 					<p>Separate test groups with a comma to create 'or' queries.</p>
 					<pre><code class="language-scss">$or: (500px) (max-height 1200px), 600px 700px;
-#tktktk {
+#this-or-that {
   color: #C0FFEE;
   @include breakpoint($or) {
     color: #BADA55;
   }
 }
 // CSS
-#tktktk {
+#this-or-that {
 color: #C0FFEE;
 }
 @media (min-width: 500px) and (max-height: 1200px), (min-width: 600px) and (max-width: 700px) {
-  #tktktk {
+  #this-or-that {
     color: #BADA55;
   }
 }
@@ -713,13 +638,13 @@ color: #C0FFEE;
 						<p><a href="http://www.w3.org/TR/css3-values/#resolution">W3C resolution units</a></p>
 						<pre><code class="language-scss">$resolution: resolution 192dpi; // dots per inch
 $resolution-standard: resolution 2dppx; // dots per ‘px’ unit
-#tktktk {
+#resolution {
   color: #C0FFEE;
   @include breakpoint($resolution) {
     color: #BADA55;
   }
 }
-#tktktk {
+#resolution {
   color: #C0FFEE;
   @include breakpoint($resolution-standard) {
     color: #BADA55;
@@ -729,16 +654,16 @@ $resolution-standard: resolution 2dppx; // dots per ‘px’ unit
 					<section id="breakpoint-advanced-resolution-css">
 						<h2>Resolution</h2>
 						<p>compiled css</p>
-						<pre><code class="language-scss">#tktktk { color: #C0FFEE; }
+						<pre><code class="language-scss">#resolution { color: #C0FFEE; }
 
 @media (resolution: 192dpi), (-webkit-device-pixel-ratio: 2), (-moz-device-pixel-ratio: 2) {
-  #tktktk { color: #BADA55; }
+  #resolution { color: #BADA55; }
 }
 
 // dppx
-#tktktk { color: #C0FFEE; }
+#resolution { color: #C0FFEE; }
 @media (resolution: 2dppx), (-webkit-device-pixel-ratio: 2), (-moz-device-pixel-ratio: 2), (resolution: 192dpi) {
-  #tktktk { color: #BADA55; }
+  #resolution { color: #BADA55; }
 }
 </code></pre>
 					</section>
@@ -769,7 +694,7 @@ $resolution-standard: resolution 2dppx; // dots per ‘px’ unit
 						<p>Grab the context of a media query from within a mixin or function. </p>
 						<pre><code class="language-scss">$basic: 700px (height 600px 800px) (orientation landscape);
 
-#tktktk {
+#context {
   @include breakpoint($basic) {
     content: 'min-height:' breakpoint-get-context('min-height');
     content: 'orientation:' breakpoint-get-context('orientation');
@@ -781,7 +706,7 @@ $resolution-standard: resolution 2dppx; // dots per ‘px’ unit
 						<h2>Breakpoint Context</h2>
 						<p>Context</p>
 						<pre><code class="language-scss">@media (min-width: 700px) and (min-height: 600px) and (max-height: 800px) and (orientation: landscape) {
-  #tktktk {
+  #context {
     content: "min-height:" 600px;
     content: "orientation:" landscape;
     content: "max-width: " false;
