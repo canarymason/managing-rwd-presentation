@@ -32,7 +32,7 @@
 body {
   font-family: $font-body;
   color: $text-color;
-  background: $background-color;
+  background-color: $background-color;
 }
 
 // Selected Text -------------------------------------------------------------- */
@@ -99,7 +99,19 @@ blockquote {
     font-family: $font-serifs;
     font-style: italic;
     font-size: ms(8);
+    color: $orange;
     @include text-shadow(rgba($black, 0.5) 2px 2px 4px);
+  }
+  &.zeldman {
+    &:after {
+      position: absolute;
+      content: $space;
+      width: image-width('bbd.png');
+      height: image-height('bbd.png');
+      background-image: image-url('bbd.png');
+      top: -85px;
+      right: -38px;
+    }
   }
   p {
     line-height: 1.5 !important;
@@ -140,10 +152,6 @@ blockquote {
   }
   &.utah {
       text-align: center;
-    img {
-      border: 0.25em solid rgba($white, 0.5);
-      margin-bottom: 1em;
-    }
     b {
       text-align: center;
     }

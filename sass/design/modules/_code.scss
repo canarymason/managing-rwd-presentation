@@ -61,9 +61,9 @@ code[class*="language-"] { color: $text-color }
 .token.cdata a { text-decoration: underline }
 .token.punctuation { color: $white-off }
 .namespace { opacity: .7 }
-.token.boolean { color: #ae81ff }
+.token.boolean { color: $purple }
 .token.number,
-.token.operator { color: #ae81ff }
+.token.operator { color: $purple }
 .token.property { color: $blue }
 .token.selector { color: $green }
 .token.string,

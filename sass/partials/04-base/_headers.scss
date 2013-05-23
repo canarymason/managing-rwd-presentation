@@ -50,6 +50,9 @@
     height: 2px;
     background-color: $white-trans-1;
   }
+  .orange & {
+    background-color: $blue;
+  }
 }
 
 %h3 {
