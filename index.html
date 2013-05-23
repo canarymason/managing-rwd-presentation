@@ -570,6 +570,9 @@ $touch: pointer coarse, 'no-query' '.touch';
 }
 .touch #freefall { color: #BADA55; }</code></pre>
           </section>
+          <section id='no-touching' data-state="orange">
+            <img src="images/no-touching.gif" alt='No Touching' >
+          </section>
           <section id="breakpoint-crazy-advanced-fallbacks-separate-file">
             <h2>Fallbacks in Separate Styesheets</h2>
             <p>Create separate stylesheets for your fallbacks.</p>
@@ -755,17 +758,29 @@ $resolution-standard: resolution 2dppx; // dots per ‘px’ unit
 						<p><a href="http://http://singularity.gs/">singularity.gs</a></p>
 					</section>
 
-					<section id="building-with-grids">
-						<h2>Building With Grids</h2>
-						<p>Grids provide order to your design and structure to your information.</p>
-					</section>
+          <section id="singularity-install">
+            <h2>Using Singularity</h2>
+            <h3><a href="https://github.com/team-sass/singularity">github.com/team-sass/singularity</a></h3>
+            <pre class="fragment"><code class="language-scss">// command line
+> gem install singularitygs</code></pre>
+            <pre class="fragment"><code class="language-scss">// compass.rb
+require 'singularitygs'</code></pre>
+            <pre class="fragment"><code class="language-scss">// working sass file
+@import 'singularitygs';</code></pre>
+          </section>
+
 					<section id="street-grids" data-source="http://tedpak.com/2013/03/31/what-new-york-does-right" data-cite="Ted Pak">
 						<img src="images/street_grids.png" alt="Street Grids of NYC, Philly, DC, and Toronto">
 					</section>
-					<section id="specific-grids">
-						<h3>The best grids are specifc to your content and your design, as they are an extension of both.</h3>
+					<section id="building-with-grids">
+            <h3>Grids provide order to your design and structure to your information.</h3><br>
+						<h3 class="fragment">The best grids are specific to your content and your design, as they are an extension of both.</h3>
 					</section>
 				</section>
+
+        <section id="box-model" data-state="orange">
+          <img class="transparent" src="images/boxmodel.png" alt="Box Model">
+        </section>
 
 				<section id="border-box">
 					<h2>Let's Cheat at CSS</h2>
