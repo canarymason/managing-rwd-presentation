@@ -141,7 +141,7 @@
 
 				<section id="vanilla-sass">
 					<h1 class="section-marker">II</h1>
-					<h2>Breakpoints with Vanilla Sass</h2>
+					<h2>Media Queries with Vanilla Sass</h2>
 				</section>
 				<section id="media-queries-breakpoints-tweakpoints">
 					<h2>Breakpoints vs Tweakpoints</h2>
@@ -153,6 +153,24 @@
 
 
 				<section>
+          <section id="media-queries-bubbled">
+            <h2>Nesting and Media Bubbling</h2>
+            <h3>Why is this wrong?</h3>
+            <pre><code class="language-scss">.menu {
+  padding: 10px;
+}
+.subnav {
+  padding: 5px;
+}
+@media (min-width: 500px) {
+  .menu {
+    padding: 100px;
+  }
+  .subnav {
+    padding: 25px;
+  }
+}</code></pre>
+          </section>
 					<section id="media-queries-bubbled">
 						<h2>Nesting and Media Bubbling</h2>
 						<p>In many cases it's more intuitive to keep your media queries with what they're altering.</p>
@@ -533,7 +551,7 @@ $basic: 500px;
             <pre><code class="language-scss">$breakpoint-no-query-fallbacks: true;
 $touch: pointer coarse, 'no-query' '.touch';
 
-#fallback {
+#freefall {
   color: #C0FFEE;
   @include breakpoint($touch) {
     color: #BADA55;
@@ -543,23 +561,23 @@ $touch: pointer coarse, 'no-query' '.touch';
           <section id="breakpoint-crazy-advanced-fallbacks-original-file-css">
             <h2>Fallbacks</h2>
             <p>compiled css</p>
-            <pre><code class="language-scss">#fallback { color: #C0FFEE; }
+            <pre><code class="language-scss">#freefall { color: #C0FFEE; }
 
 @media (pointer: coarse) {
-  #fallback {
+  #freefall {
     color: #BADA55;
   }
 }
-.touch #fallback { color: #BADA55; }</code></pre>
+.touch #freefall { color: #BADA55; }</code></pre>
           </section>
           <section id="breakpoint-crazy-advanced-fallbacks-separate-file">
             <h2>Fallbacks in Separate Styesheets</h2>
             <p>Create separate stylesheets for your fallbacks.</p>
             <pre><code class="language-scss">// _my-partial.scss
-$touch: pointer coarse, 'no-query' '.touch';
-#fallback {
+$we-have-mqs: 500px, 'no-query' '.no-mq';
+#freefall {
   color: #C0FFEE;
-  @include breakpoint($touch) { color: #BADA55; }
+  @include breakpoint($we-have-mqs) { color: #BADA55; }
 }</code></pre>
             <pre><code class="language-scss">// main.scss
 @import "my-partial";</code></pre>
@@ -571,26 +589,24 @@ $breakpoint-no-query-fallbacks: true; // Will print No Query Fallbacks
           <section id="breakpoint-crazy-advanced-fallbacks-separate-file-css">
             <h2>Fallbacks in Separate Styesheets</h2>
             <p>compiled css</p>
-            <pre><code class="language-scss">#fallback {
-  color: #C0FFEE;
-}
-@media (pointer: coarse) {
-  #fallback {
+            <pre><code class="language-scss">// main.css
+#freefall { color: #C0FFEE; }
+@media (min-width: 500px) {
+  #freefall {
     color: #BADA55;
   }
 }</code></pre>
-            <pre><code class="language-scss">#fallback {
-  color: #C0FFEE;
-}
-.touch #fallback {
+            <pre><code class="language-scss">// fallback.css
+#freefall { color: #C0FFEE; }
+
+.we-have-mqs #freefall {
   color: #BADA55;
 }</code></pre>
           </section>
 
           </section>
 
-				<section>
-
+				<!-- <section>
 					<section id="breakpoint-advanced-media">
 						<h2>Explicit Media Type</h2>
 						<p>Breakpoint defaults to no specific media type, but you have total control over this too!</p>
@@ -612,7 +628,8 @@ $breakpoint-no-query-fallbacks: true; // Will print No Query Fallbacks
 }
 </code></pre>
 					</section>
-				</section>
+				</section> -->
+
 				<section id="breakpoint-advanced-or">
 					<h2><span class="fancy">&ldquo;</span>Or<span class="fancy">&rdquo;</span> Media Queries</h2>
 					<p>Separate test groups with a comma to create 'or' queries.</p>
@@ -746,7 +763,7 @@ $resolution-standard: resolution 2dppx; // dots per ‘px’ unit
 						<img src="images/street_grids.png" alt="Street Grids of NYC, Philly, DC, and Toronto">
 					</section>
 					<section id="specific-grids">
-						<p>The best grids are specifc to your content and your design, as they are an extension of both.</p>
+						<h3>The best grids are specifc to your content and your design, as they are an extension of both.</h3>
 					</section>
 				</section>
 
@@ -962,24 +979,27 @@ $gutters: 1/3;
 					<h2>Nested Grid (Second Nesting) - Display</h2>
 					<img src="images/nest-inner-2.png" alt="Nested Grids, Second Nesting">
 				</section>
-
 			</section>
 
 
-				<section>
-					<section id="team-sass">
+				<section data-state="sky-circle">
+					<section id="whoa">
 						<h1 class="section-marker">V</h1>
 						<h2>Whoa.</h2>
 					</section>
 					<section id="thank-you">
 						<h1>Thank You</h1>
-						<h2>Team Sass</h2>
-						<p><a href="http://breakpoint-sass.com">breakpoint-sass.com</a></p>
-						<p><a href="http://http://singularity.gs/">singularity.gs</a></p>
-						<p><a href="https://github.com/team-sass">github.com/team-sass</a></p>
-						<p>Slides available at</p>
-						<p><a href="http://canarymason.github.io/managing-rwd-presentation/">canarymason.github.io/managing-rwd-presentation</a></p>
-						<blockquote>Stop When it Looks Good.</blockquote>
+            <div class="screen">
+  						<h2>Team Sass</h2>
+              <ul>
+    						<li class="no-dash"><a href="http://breakpoint-sass.com">breakpoint-sass.com</a></li>
+    						<li class="no-dash"><a href="http://http://singularity.gs/">singularity.gs</a></li>
+    						<li class="no-dash"><a href="https://github.com/team-sass">github.com/team-sass</a></li>
+              </ul>
+  						<p>Slides available at</p>
+  						<p><a href="http://canarymason.github.io/managing-rwd-presentation/">canarymason.github.io/managing-rwd-presentation</a></p>
+  						<!-- <blockquote>Stop When it Looks Good.</blockquote> -->
+            </div>
 					</section>
 				</section>
 

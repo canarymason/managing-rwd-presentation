@@ -60,6 +60,9 @@ a {
     @include link-transitions($link-transitions);
   }
   text-decoration: none;
+  .sky-circle & {
+    @include link-colors($orange, $orange, $orange, $orange, $orange);
+  }
 }
 
 em {

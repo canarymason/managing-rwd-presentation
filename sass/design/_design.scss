@@ -111,19 +111,39 @@
   position: absolute;
   left: 1em;
   bottom: 1em;
-
   z-index: 100;
-
   font-size: .75em;
-
-  .the-web & {
-    color: nth($black, 1);
-  }
+  display: none;
 }
 
 .state-background {
   .orange & {
     background-color: $orange;
   }
+  .sky-circle & {
+    background-image: image-url('sky-circle.gif');
+    background-position: 50% 50%;
+    @include background-size(cover);
+  }
 }
 
+.sky-circle {
+  p, li {
+    font-size: ms(1);
+  }
+}
+.screen {
+  background-color: rgba($black, 0.8);
+  padding-bottom: 0.5em ;
+}
+
+.reveal {
+  .progress {
+    span {
+      background-color: $white;
+    }
+  }
+  .controls {
+    opacity: 0;
+  }
+}
