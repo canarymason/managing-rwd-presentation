@@ -67,7 +67,7 @@
 
 					<ul class="fragments ">
 						<li class="no-dash"><h4>Mason Wendell</h4></li>
-						<li class="fragment">Sr. Front End Developer, NBC Universal</li>
+						<li class="fragment">Sr. Front End Developer, NBCUniversal</li>
 						<li class="fragment">codingdesigner on <a href="http://twitter.com/codingdesigner"> Twitter</a>, canarymason on <a href="http://github.com/canarymason">GitHub</a>. <br/> <a href="http://thecodingdesigner.com">TheCodingDesigner.com</a></li>
 						<li class="fragment">Co-Organizer of <a href="github.com/team-sass">Team Sass</a>, Organizer of <a href="http://www.meetup.com/Philadelphia-SASS-Meetup-Group/">Philly Sass Meetup</a> and <a href="http://www.meetup.com/Responsive-Web-Design-Philadelphia/">Philly RWD Meetup</a></li>
 					</ul>
@@ -119,14 +119,12 @@
 						<h3>Like good little web builders.</h3>
 					</section>
           <section id="bonus">
-            <h3>Bonus</h3>
+            <h1>Bonus</h1>
             <p>Gold stars to you if you also consider:</p>
-            <ul>
-              <li><a href="tktktk">Style Tiles</a></li>
-              <li><a href="tktktk">Living Style Guides</a></li>
-              <li><a href="tktktk">Style Prototypes</a></li>
-              <li>Nailing your <a href="tktktk">Typography</a> first / early</li>
-            </ul>
+            <h3><a href="tktktk">Style Tiles</a></h3>
+            <h3><a href="tktktk">Living Style Guides</a></h3>
+            <h3><a href="tktktk">Style Prototypes</a></h3>
+            <h3>Nailing your <a href="tktktk">Typography</a> first / early</h3>
           </section>
 				</section>
 
@@ -160,7 +158,7 @@
 
 				<section>
           <section id="media-queries-bubbled">
-            <h2>Nesting and Media Bubbling</h2>
+            <h2>Separation vs Nesting</h2>
             <h3>Why is this wrong?</h3>
             <pre><code class="language-scss">.menu {
   padding: 10px;
@@ -180,7 +178,7 @@
 					<section id="media-queries-bubbled">
 						<h2>Nesting and Media Bubbling</h2>
 						<p>In many cases it's more intuitive to keep your media queries with what they're altering.</p>
-						<pre class="half"><code class="language-scss">.menu {
+						<pre class="half point-right"><code class="language-scss">.menu {
   padding: 10px;
   @media (min-width: 500px) {
     padding: 100px;
@@ -544,9 +542,9 @@ $we-have-mqs: 500px, 'no-query' '.no-mq';
   @include breakpoint($we-have-mqs) { color: #BADA55; }
 }</code></pre>
             </div>
-            <pre class="half"><code class="language-scss">// main.scss
+            <pre class="half point-up"><code class="language-scss">// main.scss
 @import "my-partial";</code></pre>
-            <pre class="half"><code class="language-scss">// fallback.scss
+            <pre class="half point-up"><code class="language-scss">// fallback.scss
 $breakpoint-no-queries: true; // Will not print media queries
 $breakpoint-no-query-fallbacks: true; // Will print No Query Fallbacks
 @import "my-partial";</code></pre>
@@ -738,7 +736,7 @@ $resolution-standard: resolution 2dppx; // dots per ‘px’ unit
             <div class="shaded fragment">
               <h3 class="">The grid should not drive the design.</h3>
               <h3 class="fragment">They're often used as a technical aid, rather than a creative tool.</h3>
-              <h3 class="fragment yo">All the columns are the same size!</h3>
+              <h3 class="fragment yo">All the columns are the same size.</h3>
             </div>
           </section>
           <section id="grid-design">

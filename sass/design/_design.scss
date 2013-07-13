@@ -188,6 +188,17 @@ body {
     }
   }
 }
+.point-up {
+  @extend %arrow;
+  &:after {
+    top: auto;
+    bottom: 100%;
+    border: {
+      width: 0 1em 1em 1em;
+      color: $transparent $transparent rgba($black, 0.5) $transparent;
+    }
+  }
+}
 
 
 .half {
