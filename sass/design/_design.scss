@@ -3,19 +3,8 @@
 // SITE-WIDE DESIGN -------------------------------------------------------------- */
 
 
-// TEMPORARILY HIDE ADMIN STUFFS
-// AND OTHER STUFFS THAT ARE
-// IN THE WAY FOR NOW
-// #admin-menu {
-//   display: none;
-// }
-// html body.admin-menu {
-//   margin-top: auto !important;
-// }
-// [class*="iib"] {
-//   // display: none;
-//   background-color: $gray-dark;
-// }
+$grids: 2;
+$gutters: 1/10;
 
 .fancy {
   font-family: $font-serifs;
@@ -125,6 +114,25 @@
     background-position: 50% 50%;
     @include background-size(cover);
   }
+  .grids-suck & {
+    background: {
+      image: image-url('grids-suck.png');
+      position: 50% 50%;
+    }
+    @include background-size(cover);
+  }
+  .even-grid & {
+    background: {
+      image: image-url('equilateral-grid-bg.png');
+      position: 50% 50%;
+    }
+    @include background-size(100% 100%);
+  }
+}
+body {
+  .even-grid & {
+    color: $black;
+  }
 }
 
 .sky-circle {
@@ -145,5 +153,75 @@
   }
   .controls {
     opacity: 0;
+  }
+}
+
+%arrow {
+  position: relative;
+  overflow: visible;
+  &:after {
+    position: absolute;
+    content: $space;
+    width: 0;
+    height: 0;
+    left: 1em;
+    top: 100%;
+    border: {
+      width: 1em 1em 0 1em;
+      style: solid;
+      color: rgba($black, 0.5) $transparent $transparent $transparent;
+    }
+  }
+}
+
+.point-down {
+  @extend %arrow;
+}
+.point-right {
+  @extend %arrow;
+  &:after {
+    top: 1em;
+    left: 100%;
+    border: {
+      width: 1em 0 1em 1em;
+      color: $transparent $transparent $transparent rgba($black, 0.5);
+    }
+  }
+}
+
+
+.half {
+  &:nth-of-type(1) {
+    @include grid-span(1, 1);
+  }
+  &:nth-of-type(2) {
+    @include grid-span(1, 2);
+  }
+  &[class*="point"] {
+    overflow: visible;
+  }
+  pre {
+    &[class*="point"] {
+      overflow: visible;
+    }
+  }
+}
+
+.shaded {
+  background-color: $black-trans;
+  padding: 0.5em;
+}
+
+.yo {
+  // background-color: $black-trans;
+  font-weight: bold;
+}
+
+.section-marker {
+  ~ footer {
+    position: absolute;
+    bottom: -4em;
+    text-align: center;
+    width: 100%;
   }
 }
